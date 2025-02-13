@@ -5,7 +5,7 @@ import { CurrencyPipe, isPlatformBrowser } from '@angular/common';
 import { CategoryService } from '../../core/services/categories/category.service';
 import { Icategory } from '../../shared/interfaces/icategory';
 import { Swiper } from 'swiper';
-import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 @Component({
   selector: 'app-home',
   imports: [CurrencyPipe],
@@ -92,26 +92,4 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
-  initHeroSwiper() {
-    const heroSwiper = new Swiper('.hero-swiper', {
-      modules: [Navigation, Pagination, Autoplay, EffectFade],
-      slidesPerView: 1,
-      effect: 'fade', // Smooth fade transition between slides
-      speed: 1000, // Transition speed in milliseconds
-      loop: true, // Infinite loop
-      autoplay: {
-        delay: 5000, // 5 seconds between slides
-        disableOnInteraction: false, // Continue autoplay after user interaction
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  }
 }
