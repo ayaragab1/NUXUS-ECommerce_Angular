@@ -1,4 +1,93 @@
+<section class="tf-slideshow slider-default slider-effect-fade">
+  <div class="swiper swiper-fade swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden"
+    dir="ltr">
+    <div class="swiper-wrapper" style="transition-duration: 0ms; transition-delay: 0ms;">
+      <div class="swiper-slide swiper-slide-next swiper-slide-prev"
+        style="width: 1513px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"
+        data-swiper-slide-index="1">
+        <div class="wrap-slider"><img alt="fashion-slideshow" width="1920" height="803" decoding="async" data-nimg="1"
+            src="/images/slider/slider-women1.jpg" style="color: transparent;">
+          <div class="box-content">
+            <div class="content-slider">
+              <div class="box-title-slider">
+                <p class="fade-item fade-item-1 subheading text-btn-uppercase text-white">BIKINIS &amp; SWIMSUITS</p>
+                <div class="fade-item fade-item-2 heading text-white title-display"><span>Find
+                    Your<br></span><span>Signature Style<br></span></div>
+              </div>
+              <div class="fade-item fade-item-3 box-btn-slider"><a class="tf-btn btn-fill btn-white"
+                  href="/shop-default-grid"><span class="text">Explore Collection</span><i
+                    class="icon icon-arrowUpRight"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active"
+        style="width: 1513px; opacity: 1; transform: translate3d(-1513px, 0px, 0px); transition-duration: 0ms;"
+        data-swiper-slide-index="0">
+        <div class="wrap-slider"><img alt="fashion-slideshow" width="1920" height="803" decoding="async" data-nimg="1"
+            src="/images/slider/slider-women1.jpg" style="color: transparent;">
+          <div class="box-content">
+            <div class="content-slider">
+              <div class="box-title-slider">
+                <p class="fade-item fade-item-1 subheading text-btn-uppercase text-white">BIKINIS &amp; SWIMSUITS</p>
+                <div class="fade-item fade-item-2 heading text-white title-display"><span>Flash Sale Madness<br></span>
+                </div>
+              </div>
+              <div class="fade-item fade-item-3 box-btn-slider"><a class="tf-btn btn-fill btn-white"
+                  href="/shop-default-grid"><span class="text">Explore Collection</span><i
+                    class="icon icon-arrowUpRight"></i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap-pagination">
+    <div class="container">
+      <div
+        class="sw-dots sw-pagination-slider type-circle white-circle justify-center spd55 swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
+        <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span
+          class="swiper-pagination-bullet"></span></div>
+    </div>
+  </div>
+</section>
 
+
+<section class="flat-spacing-2 pb_0">
+  <div class="container">
+    <div class="heading-section-2 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+      <h2 class="section-title heading-border  font-semibold w-75 mx-auto text-lg text-sky-700">Categories</h2>
+    </div>
+    <div class="flat-collection-circle wow fadeInUp" data-wow-delay="0.1s"
+      style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+      <div class="swiper swiper-initialized swiper-horizontal swiper-backface-hidden" dir="ltr">
+        <div class="swiper-wrapper">
+          @for (categ of categories; track categ._id) {
+
+          <div class="swiper-slide swiper-slide-active" style="width: 205px;">
+            <div class="collection-circle hover-img"><a class="img-style" href="/shop-collection"><img
+                  alt="collection-img" loading="lazy" decoding="async" data-nimg="1" class="lazyload "
+                  style="color:transparent" [src]="categ.image"></a>
+              <div class="collection-content text-center">
+                <div><a class="cls-title" href="/shop-collection">
+                    <h6 class="text">{{categ.name}}</h6><i class="fa-regular fa-eye"></i>
+                  </a></div>
+              </div>
+            </div>
+          </div>
+          }
+
+
+        </div>
+      </div>
+
+      <div class="nav-prev-collection hidden lg:flex nav-sw style-line nav-sw-left snbp12 swiper-button-disabled"><i
+          class="fa-solid fa-chevron-left"></i></div>
+      <div class="nav-next-collection hidden lg:flex nav-sw style-line nav-sw-right snbn12"><i
+          class="fa-solid fa-chevron-right"></i></div>
+    </div>
+  </div>
+</section>
 <section class="products-list my-4">
   <div class="container">
     <div class="py-3">
