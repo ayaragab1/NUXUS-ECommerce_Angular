@@ -1,1 +1,128 @@
-<section class=""></section>
+<section class="">
+    <div class=" flex justify-center  align-middle   text-white  text-center p-2 text-sm bg-sky-700" role="alert">
+        <h5 class="font-normal  text-white py-1 ">Get Up to <b>40% OFF</b> New-Season Styles</h5>
+        <!-- #TODO: Go to category page -->
+        <a class="bg-sky-600 px-2 py-1 ms-2 ">MEN</a>
+        <a class="bg-sky-600 px-2 py-1 ms-2">WOMEN</a>
+        <small class=" ms-2 py-1 text-gray-300">* Limited time only.</small>
+    </div>
+
+
+
+    <nav class="bg-gray-50 border-gray-200 dark:bg-gray-900 p-4">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl ">
+            <!-- TODO: Go to home page -->
+            <a class="flex items-center  rtl:space-x-reverse">
+                <img src="/images/nexus-market-logo.svg" class="w-3/6" alt="Flowbite Logo" />
+                <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> -->
+            </a>
+
+            <form class="w-6/12">
+                <label for="default-search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </div>
+                    <input type="search" id="default-search"
+                        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:border-gray-400 focus:shadow-md placeholder:text-gray-600"
+                        placeholder="Search Clothes , Mobile  ..." required />
+                    <button type="submit"
+                        class="text-white absolute end-2.5 bottom-2.5 bg-sky-600 hover:bg-sky-700 transition-colors duration-500  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                </div>
+            </form>
+
+            <div class="flex items-center space-x-6 rtl:space-x-reverse">
+                <a href="tel:5541251234" class="text-sm  text-gray-500 dark:text-white hover:underline">(555)
+                    412-1234</a>
+                <span class="separator d-lg-block"></span>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/1A3CAVDU18/?mibextid=wwXIfr"
+                        class="social-icon social-facebook icon-facebook" target="_blank" rel="noopener"
+                        title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ayaragab9999?igsh=anlyMnd3ODl4NjF5&utm_source=qr"
+                        class="social-icon social-twitter icon-twitter" target="_blank" rel="noopener"
+                        title="Instagram">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="https://x.com/ayaragabb?s=21" class="social-icon social-instagram icon-instagram"
+                        target="_blank" rel="noopener" title="X">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="bg-gray-100 py-2 flex justify-between items-center align-middle">
+        <div class="max-w-screen-xl px-4 py-3 mx-auto">
+            <div class="flex items-center">
+                <ul class="flex flex-row  mt-0 space-x-10 rtl:space-x-reverse text-xs font-semibold">
+                    <li class="">
+                        <a routerLink="/home" routerLinkActive="active"
+                            class="text-gray-600 uppercase py-3  dark:text-white hover:text-sky-700"
+                            aria-current="page">Home </a>
+                    </li>
+                    <li>
+                        <a routerLink="/products" routerLinkActive="active"
+                            class="text-gray-600 uppercase  py-3  dark:text-white hover:text-sky-700">Products</a>
+                    </li>
+                    <li>
+                        <a routerLink="/categories" routerLinkActive="active"
+                            class="text-gray-600 uppercase py-3  dark:text-white hover:text-sky-700">Categories</a>
+                    </li>
+                    <li>
+                        <a routerLink="/about" routerLinkActive="active"
+                            class="text-gray-600 uppercase py-3  dark:text-white hover:text-sky-700">About</a>
+                    </li>
+                    <li>
+                        <a routerLink="/Contact" routerLinkActive="active"
+                            class="text-gray-600 uppercase py-3  dark:text-white hover:text-sky-700">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-screen-xl px-4 py-3 mx-auto flex">
+            <a routerLink="/cart">
+                <i class="fa-solid fa-cart-shopping text-2xl  text-sky-700" title="Cart"></i>
+            </a>
+            <span class="separator d-lg-block"></span>
+            <a routerLink="/wishlist">
+                <i class="fa-solid fa-heart text-2xl  text-sky-700" title="Wish List"></i>
+            </a>
+            <span class="separator d-lg-block"></span>
+            @if(isLoggedIn() ){
+            <span class="flex items-center gap-2">
+                <i class="fa-solid fa-user text-2xl pe-1  text-sky-700"></i>
+                <span class="flex flex-col leading-tight text-center">
+                    <span class="font-medium text-xs  text-gray-500 ">Welcome <b>User</b></span>
+                    <a routerLink="/login">
+                        <span class="text-sm  text-sky-700 hover:underline">Logout</span>
+
+                    </a>
+                </span>
+            </span>
+            }@else {
+            <span class="flex items-center gap-2">
+                <i class="fa-solid fa-user text-2xl pe-1  text-sky-700"></i>
+                <span class="flex flex-col leading-tight">
+                    <span class="font-medium text-xs  text-gray-500 ps-2">Welcome</span>
+                    <a routerLink="/login">
+                        <span class="text-sm  text-sky-700 hover:underline">Login / Register</span>
+
+                    </a>
+                </span>
+            </span>
+            }
+
+
+
+        </div>
+    </nav>
+
+</section>

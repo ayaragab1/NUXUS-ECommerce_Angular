@@ -1,1 +1,55 @@
-<p>home works!</p>
+
+<section class="products-list my-4">
+  <div class="container">
+    <div class="py-3">
+      <h2 class="section-title heading-border  font-semibold w-75 mx-auto text-lg text-sky-700">New Arrivals</h2>
+      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        @for (product of products.slice(0, 12); track product.id) {
+        <div class="active">
+          <div
+            class="product-default text-gray-400 bg-white rounded-lg shadow-md transition-shadow duration-300 ease-in-out hover:shadow-2xl">
+            <figure class="flex justify-center items-center relative mb-4">
+              <a class="block w-full h-full">
+                <img [src]="product.imageCover" alt="product"
+                  class="w-full h-auto transition-opacity duration-300 ease-in-out">
+                <img [src]="product.images[0]" alt="product"
+                  class="absolute inset-0 w-full h-auto opacity-0 transition-opacity duration-300 ease-in-out">
+              </a>
+
+            </figure>
+            <div class="product-details bg-gray-50 flex flex-col items-center justify-center p-2 text-center">
+              <div class="category-list text-sm text-gray-600 uppercase opacity-80 truncate">
+                <a routerLink="/category" class="product-category">{{product.category.name}}</a>
+              </div>
+              <h3 class="product-title text-md  font-normal leading-tight mt-2 mb-1 w-3/4 mx-auto overflow-hidden">
+                <a class="truncate block w-full">{{ product.title }}</a>
+              </h3>
+              <div class="ratings-container flex justify-center items-center space-x-1 mt-2">
+                @for (star of getStars(product.ratingsAverage); track $index) {
+                <i class="fa" [class.fa-solid]="star !== 0.5 && star !== 0" [class.fa-star]="star === 1 || star === 0"
+                  [class.fa-star-half-stroke]="star === 0.5" [class.fa-regular.fa-star]="star === 0"
+                  [class.text-yellow-400]="star !== 0" [class.text-gray-300]="star === 0">
+                </i>
+                }
+              </div>
+
+
+              <div class="price-box mt-2">
+                <span class="product-price text-gray-900 font-semibold">{{product.price |currency }}</span>
+              </div>
+              <div class="product-action mt-3">
+                <a href="wishlist.html" class="btn-icon-wish" title="wishlist"><i class="fa-regular fa-heart"></i></a>
+                <a href="product.html" class="btn-icon btn-add-cart"><i class="fa fa-arrow-right"></i><span>SELECT
+                    OPTIONS</span></a>
+                <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View"><i
+                    class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+
+</section>
