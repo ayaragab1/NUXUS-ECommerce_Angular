@@ -1,1 +1,105 @@
-<p>login works!</p>
+<section class="loginForm">
+    <div class="w-11/12 lg:w-6/12  mx-auto border shadow-lg rounded-md  my-20">
+        <div class="">
+            <h1 class=" font-semibold text-sky-700 text-xl my-5 text-center">Login</h1>
+            <div class="">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
+
+                    <div class="relative w-5/6 mx-auto my-5">
+                        <div class="relative">
+
+                            <input type="email" id="email" formControlName="email"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-1 border-gray-300 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-sky-700 peer"
+                                placeholder=" " />
+                            <label for="email"
+                                class="absolute text-sm  text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2  peer-focus:text-lg peer-focus:text-sky-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Email</label>
+
+                        </div>
+                        @let email = loginForm.get('email');
+                        @if(email?.errors && email?.touched ){
+                        <div class="flex mt-1 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                            role="alert">
+                            <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                            </svg>
+                            <span class="sr-only">Danger</span>
+                            <div>
+                                <ul class="mt-1.5 list-disc list-inside">
+                                    @if(email?.getError('required')){
+                                    <li>Email is required</li>
+                                    }
+                                    @else if(email?.getError('email')){
+                                    <li>Please Enter a valid email address</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+
+
+                    <div class="relative w-5/6 mx-auto my-5">
+                        <div class="relative">
+                            <input type="password" id="password" formControlName="password"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-1 border-gray-300 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-sky-700 peer"
+                                placeholder=" " />
+                            <label for="password"
+                                class="absolute text-sm  text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2  peer-focus:text-lg peer-focus:text-sky-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Password</label>
+
+                        </div>
+                        @let password = loginForm.get('password');
+                        @if(password?.errors && password?.touched ){
+                        <div class="flex mt-1 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                            role="alert">
+                            <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                            </svg>
+                            <span class="sr-only">Danger</span>
+                            <div>
+                                <ul class="mt-1.5 list-disc list-inside">
+                                    @if(password?.getError('required')){
+                                    <li>Password is required</li>
+
+                                    }
+                                    @else if(password?.getError('pattern')){
+                                    <li>Password must start with upperCase then from 6 to more any chars </li>
+
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+
+
+
+                    <div class="relative w-5/6 mx-auto my-5 ">
+
+                        <button type="submit" [disabled]="isLoading" class="text-white bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 
+                         hover:bg-gradient-to-br focus:ring-4 focus:outline-none 
+                         focus:ring-blue-300 dark:focus:ring-sky-800 font-medium 
+                         rounded-lg text-md px-7 py-1 text-center me-2 mb-2
+                         disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-60">Login
+                            @if(isLoading){
+                            <span> <i class="fas fa-spin fa-spinner"></i></span>
+
+                            }</button>
+                        <a routerLink="/register">
+                            <span class="text-sm  text-gray-600 hover:text-gray-900">New User? <b
+                                    class="underline cursor-pointer">Sign up</b> </span> </a>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

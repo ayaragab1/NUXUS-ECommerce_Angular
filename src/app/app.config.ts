@@ -7,6 +7,7 @@ import {
   withEventReplay,
 } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { NOTYF, notyfFactory } from './shared/utilities/notyf.token';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,5 +16,7 @@ export const appConfig: ApplicationConfig = {
     withInMemoryScrolling({ scrollPositionRestoration: 'top' }), withHashLocation(), withViewTransitions()),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
+    { provide: NOTYF, useFactory: notyfFactory }
+
   ],
 };

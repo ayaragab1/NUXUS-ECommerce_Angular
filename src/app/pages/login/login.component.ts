@@ -1,11 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../core/services/auth/auth.service';
+import { Notyf } from 'notyf';
+import { NOTYF } from '../../shared/utilities/notyf.token';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [RouterLink ,  ReactiveFormsModule,],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent {
+  constructor(@Inject(NOTYF) private notyf: Notyf) {}
 
+  isLoading: boolean = false;
+
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    password: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(/^[A-Z]\w{7,}$/),
+    ]),
+  });
+
+  onSubmitLoginForm():void {
+    
+    if(this.loginForm.valid){
+      this.isLoading = true;
+      this.authService.loginUser(this.loginForm.value).subscribe({
+        next: (res) => {
+          if (res.message == 'success') {
+            this.notyf.success('LoggedIn Successfully🎉');
+            setTimeout(() => {
+              this.router.navigate(['/home']);
+            }, 1000);
+          }
+  
+          this.isLoading = false;
+        },
+        error: (error) => {
+          this.isLoading = false;
+          this.notyf.error(error.error.message);
+        },
+      });
+    }else{
+     this.loginForm.markAllAsTouched();
+    }
+
+  }
 }
