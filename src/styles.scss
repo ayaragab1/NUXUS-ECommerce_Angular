@@ -7,6 +7,7 @@
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
 
+@import 'ngx-toastr/toastr';
 
 body{
     font-family: "Open Sans", sans-serif;
@@ -17,3 +18,10 @@ body{
     font-family: Poppins, sans-serif;
 }
 
+.short-divider {
+    width: 60px;
+    height: 0;
+    border-top: 2px solid #e7e7e7;
+    margin: 0.5rem 0 1rem;
+    text-align: left;
+}

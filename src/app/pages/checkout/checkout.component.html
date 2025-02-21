@@ -1,1 +1,138 @@
-<p>checkout works!</p>
+<section class="ckeckoutForm">
+    <div class="w-11/12 lg:w-6/12  mx-auto border shadow-lg rounded-md  my-20">
+        <div class="">
+            <h1 class=" font-semibold text-sky-700 text-2xl my-5 text-center">Checkout</h1>
+            <div class="">
+                <form [formGroup]="checkOutForm">
+
+                    <div class="relative w-5/6 mx-auto my-5">
+                        <div class="relative">
+
+                            <textarea id="details" formControlName="details"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-1 border-gray-300 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-sky-700 peer"
+                                placeholder=" "></textarea>
+                            <label for="details"
+                                class="absolute text-sm  text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2  peer-focus:text-lg peer-focus:text-sky-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Details</label>
+
+                        </div>
+                        @let details = checkOutForm.get('details');
+                        @if(details?.errors && details?.touched ){
+                        <div class="flex mt-1 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                            role="alert">
+                            <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                            </svg>
+                            <span class="sr-only">Danger</span>
+                            <div>
+                                <ul class="mt-1.5 list-disc list-inside">
+                                    @if(details?.getError('required')){
+                                    <li>Details is required</li>
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+                    <div class="relative w-5/6 mx-auto my-5">
+                        <div class="relative">
+
+                            <input type="text" id="city" formControlName="city"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-1 border-gray-300 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-sky-700 peer"
+                                placeholder=" " />
+                            <label for="city"
+                                class="absolute text-sm  text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2  peer-focus:text-lg peer-focus:text-sky-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">City</label>
+
+                        </div>
+                        @let city = checkOutForm.get('city');
+                        @if(city?.errors && city?.touched ){
+                        <div class="flex mt-1 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                            role="alert">
+                            <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                            </svg>
+                            <span class="sr-only">Danger</span>
+                            <div>
+                                <ul class="mt-1.5 list-disc list-inside">
+                                    @if(city?.getError('required')){
+                                    <li>City is required</li>
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+
+
+                    <div class="relative w-5/6 mx-auto my-5">
+                        <div class="relative">
+                            <input type="tel" id="phone" formControlName="phone"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-1 border-gray-300 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-sky-700 peer"
+                                placeholder=" " />
+                            <label for="phone"
+                                class="absolute text-sm  text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2  peer-focus:text-lg peer-focus:text-sky-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Phone</label>
+
+                        </div>
+                        @let phone = checkOutForm.get('phone');
+                        @if(phone?.errors && phone?.touched ){
+                        <div class="flex mt-1 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                            role="alert">
+                            <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                            </svg>
+                            <span class="sr-only">Danger</span>
+                            <div>
+                                <ul class="mt-1.5 list-disc list-inside">
+                                    @if(phone?.getError('required')){
+                                    <li>Phone is required</li>
+
+                                    }
+                                    @else if(phone?.getError('pattern')){
+                                    <li>Please enter a valid phone number</li>
+
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+
+
+
+                    <div class="relative w-5/6 mx-auto my-5 text-center ">
+
+                        <button type="button" [disabled]="isLoading" (click)="onSubmitCheckOutForm('visa')" class="text-white hover:bg-yellow-600 transition-all duration-500 bg-yellow-500
+                         hover:bg-gradient-to-br focus:ring-4 focus:outline-none 
+                         focus:ring-yellow-300 font-medium 
+                         rounded-lg text-md px-7 py-1 text-center me-2 mb-2
+                         disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-60">Online Payment  
+                        </button>
+
+                        <button type="button" [disabled]="isLoading" (click)="onSubmitCheckOutForm('cash')" class="text-white hover:bg-yellow-600 transition-all duration-500  bg-yellow-500
+                           hover:bg-gradient-to-br focus:ring-4 focus:outline-none 
+                           focus:ring-yellow-300 font-medium 
+                           rounded-lg text-md px-7 py-1 text-center me-2 mb-2
+                           disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-60">Cash Payment
+                        
+                        </button>
+
+
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

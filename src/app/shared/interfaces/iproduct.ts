@@ -1,7 +1,9 @@
+import { Icategory } from "./icategory"
+
 export interface IProduct {
   sold: number
   images: string[]
-  subcategory: Subcategory[]
+  subcategory: ISubcategory[]
   ratingsQuantity: number
   _id: string
   title: string
@@ -10,29 +12,23 @@ export interface IProduct {
   quantity: number
   price: number
   imageCover: string
-  category: Category
-  brand: Brand
+  category: Icategory
+  brand: IBrand
   ratingsAverage: number
   createdAt: string
   updatedAt: string
   id: string
 }
 
-export interface Subcategory {
+export interface ISubcategory {
   _id: string
   name: string
   slug: string
   category: string
 }
 
-export interface Category {
-  _id: string
-  name: string
-  slug: string
-  image: string
-}
 
-export interface Brand {
+export interface IBrand {
   _id: string
   name: string
   slug: string

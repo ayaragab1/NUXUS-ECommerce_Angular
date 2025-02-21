@@ -1,0 +1,141 @@
+.gi-cart-section .gi-sidebar-wrap .gi-ship-title::after {
+    content: "\f107";
+    position: relative;
+    font-family: "gIcons";
+    font-size: 18px;
+    color: #777;
+    font-weight: 400;
+  }
+  
+  .gi-cart-content .table-content table tbody > tr td .cart-qty-plus-minus input {
+    background: transparent none repeat scroll 0 0;
+  }
+  .gi-cart-content .table-content table tbody > tr td .cart-qty-plus-minus .ms_cart_qtybtn {
+    color: #4b5966;
+    float: left;
+    font-size: 20px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    width: 40px;
+    height: 38px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .gi-cart-content .table-content table tbody > tr td .cart-qty-plus-minus .ms_qtybtn {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    cursor: pointer;
+    font-size: 0;
+    color: #4b5966;
+    height: 19px;
+    position: relative;
+  }
+  .gi-cart-content .table-content table tbody > tr td .cart-qty-plus-minus .ms_qtybtn:before {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #4b5966;
+    height: 19px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    content: "";
+    font-family: "gIcons";
+    overflow: hidden;
+    font-size: 15px;
+  }
+  .gi-cart-content .table-content table tbody > tr td .cart-qty-plus-minus .dec.ms_qtybtn:before {
+    padding-bottom: 4px;
+    content: "\f0d7"; /* Font Awesome caret down */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #999;
+
+  }
+  .gi-cart-content .table-content table tbody > tr td .cart-qty-plus-minus .inc.ms_qtybtn:before {
+    padding-top: 4px;
+    content: "\f0d8"; /* Font Awesome caret up */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #999;
+
+  }
+  .gi-cart-content .table-content table tbody > tr td.gi-cart-pro-remove a:hover i {
+    color: #ff9d9d;
+  }
+  
+  .gi-cart-form select {
+    padding: 0 15px;
+    webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -webkit-appearance: none;
+            appearance: none;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 0 !important;
+    background: #fff;
+    background-image: none;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 0 10px;
+    color: #777;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .gi-cart-form .gi-cart-select-inner::after {
+    content: "^";
+    position: absolute;
+    font-family: "gIcons";
+    top: 0;
+    right: 0;
+    padding: 0 10px;
+    cursor: pointer;
+    pointer-events: none;
+    font-size: 18px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 50px;
+    line-height: 1;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: #777;
+  }
+  

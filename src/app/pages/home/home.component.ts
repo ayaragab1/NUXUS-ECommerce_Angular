@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ProductsService } from '../../core/services/products/products.service';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { CurrencyPipe, isPlatformBrowser } from '@angular/common';
@@ -6,20 +6,30 @@ import { CategoryService } from '../../core/services/categories/category.service
 import { Icategory } from '../../shared/interfaces/icategory';
 import { Swiper } from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
+import { Router, RouterLink } from '@angular/router';
+import { CartService } from '../../core/services/carts/cart.service';
+import { Notyf } from 'notyf';
+import { NOTYF } from '../../shared/utilities/notyf.token';
 @Component({
   selector: 'app-home',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
+  constructor(@Inject(NOTYF) private notyf: Notyf) {}
+
   //Function Injection For Services
   private readonly productsService = inject(ProductsService);
   private readonly categoryService = inject(CategoryService);
+  private readonly cartService = inject(CartService);
+  private readonly route = inject(Router);
+
   private readonly iD = inject(PLATFORM_ID);
   //Arrays to hold data back from api
   products: IProduct[] = [];
   categories: Icategory[] = [];
+  isLoading: boolean = false;
 
   ngOnInit(): void {
     this.getProducts();
@@ -92,4 +102,30 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  //Cart logic
+  addToCart(id: string): void {
+    if (isPlatformBrowser(this.iD)) {
+      if (localStorage.getItem('userToken') == null) {
+        this.notyf.error('Please Login To add Product To Your Cart');
+        this.route.navigate(['/login']);
+      } else {
+        this.isLoading = true;
+
+        this.cartService.addProductToCart(id).subscribe({
+          next: (res) => {
+            this.isLoading = false;
+
+            this.notyf.success(res.message);
+          },
+          error: (err) => {
+            this.isLoading = false;
+
+            console.log(err);
+
+            // this.notyf.error(err)
+          },
+        });
+      }
+    }
+  }
 }

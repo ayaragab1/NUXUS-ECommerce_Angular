@@ -40,7 +40,15 @@ export class LoginComponent {
         next: (res) => {
           if (res.message == 'success') {
             this.notyf.success('LoggedIn Successfully🎉');
+
             setTimeout(() => {
+              //1-save token in local storage
+              localStorage.setItem('userToken', res.token);
+                  
+              //2-decode token
+              this.authService.saveUserData();
+
+              //3-redirect to home page
               this.router.navigate(['/home']);
             }, 1000);
           }

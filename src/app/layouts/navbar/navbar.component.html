@@ -109,13 +109,13 @@
                 <a routerLink="/wishlist">
                     <i class="fa-solid fa-heart text-2xl text-sky-700" title="Wish List"></i>
                 </a>
-                @if(isLoggedIn()) {
+                @if(isLoggedIn) {
                 <span class="flex items-center gap-2">
                     <i class="fa-solid fa-user text-2xl pe-1 text-sky-700"></i>
                     <span class="flex flex-col leading-tight text-center">
                         <span class="font-medium text-xs text-gray-500">Welcome <b>User</b></span>
-                        <a routerLink="/login">
-                            <span class="text-sm text-sky-700 hover:underline">Logout</span>
+                        <a (click)="logout()">
+                            <span class="text-sm text-sky-700 hover:underline cursor-pointer">Logout</span>
                         </a>
                     </span>
                 </span>
