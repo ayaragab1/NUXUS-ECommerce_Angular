@@ -9,19 +9,19 @@
 
             <!-- Get In Touch Section -->
             <div class="text-center md:text-left">
-                <h3 class="text-xl font-semibold text-white mb-4">Get In Touch</h3>
+                <h3 class="text-xl font-semibold text-white mb-4">{{'footer.getInTouch.title' | translate}}</h3>
                 <div class="space-y-3">
                     <div>
-                        <p class="text-gray-500 font-medium">ADDRESS:</p>
-                        <p>123 Street Name, New Cairo, Egypt</p>
+                        <p class="text-gray-500 font-medium">{{'footer.getInTouch.addressLabel' | translate}}</p>
+                        <p>{{'footer.getInTouch.address' | translate}}</p>
                     </div>
                     <div>
-                        <p class="text-gray-500 font-medium">PHONE:</p>
-                        <p>Toll Free (123) 456-7890</p>
+                        <p class="text-gray-500 font-medium">{{'footer.getInTouch.phoneLabel' | translate}}:</p>
+                        <p>{{'footer.getInTouch.phone' | translate}}</p>
                     </div>
                     <div>
-                        <p class="text-gray-500 font-medium">EMAIL:</p>
-                        <a href="mailto:ayaragab1699@gmail.com">ayaragab1699&commat;gmail.com</a>
+                        <p class="text-gray-500 font-medium">{{'footer.getInTouch.emailLabel' | translate}}</p>
+                        <a href="mailto:ayaragab1699@gmail.com">{{'footer.getInTouch.email' | translate}}</a>
                     </div>
                     <div class="flex space-x-4 mt-4 justify-center md:justify-start">
                         <a href="https://www.facebook.com/share/1A3CAVDU18/?mibextid=wwXIfr" class="p-2" title="Facebook">
@@ -39,26 +39,26 @@
 
             <!-- Customer Services Section -->
             <div class="text-center md:text-center lg:text-left">
-                <h3 class="text-xl font-semibold text-white mb-4">Customer Services</h3>
+                <h3 class="text-xl font-semibold text-white mb-4">{{'footer.customerServices.title' | translate}}</h3>
                 <ul class="space-y-2 ">
-                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">Help & FAQs</a></li>
-                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">Order Tracking</a></li>
-                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">Shipping & Delivery</a></li>
-                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">Orders History</a></li>
-                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">Login</a></li>
-                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">{{'footer.customerServices.help' | translate}}</a></li>
+                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">{{'footer.customerServices.orderTracking' | translate}}</a></li>
+                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">{{'footer.customerServices.shipping' | translate}}</a></li>
+                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">{{'footer.customerServices.orderHistory' | translate}}</a></li>
+                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">{{'footer.customerServices.login' | translate}}</a></li>
+                    <li><a href="https://www.google.com" class="hover:text-white transition-colors">{{'footer.customerServices.aboutUs' | translate}}</a></li>
                 </ul>
             </div>
 
             <!-- Newsletter Section -->
             <div class="text-center md:text-left"> 
-                <h3 class="text-xl font-semibold text-white mb-4">Subscribe Newsletter</h3>
-                <p class="mb-4">Get all the latest information on events, sales and offers. Sign up for newsletter:</p>
+                <h3 class="text-xl font-semibold text-white mb-4">{{'footer.subscribeNewsletter.title' | translate}}</h3>
+                <p class="mb-4">{{'footer.subscribeNewsletter.description' | translate}}</p>
                 <div class="flex">
-                    <input type="email" placeholder="Email address"
+                    <input type="email" title="Email" [placeholder]="'footer.subscribeNewsletter.emailPlaceholder' | translate"
                         class="flex-1 bg-gray-800 text-white px-4 py-2 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <button class="bg-gray-700 text-white px-4 py-2 rounded-r hover:bg-gray-600 transition-colors">
-                        OK
+                        {{'footer.subscribeNewsletter.button' | translate}}
                     </button>
                 </div>
             </div>
@@ -66,7 +66,7 @@
 
         <!-- Bottom Footer -->
         <div class="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-            <p class="text-sm">Nexus eCommerce. © 2021. All Rights Reserved </p>
+            <p class="text-sm"> {{'footer.copyright' | translate}}</p>
             <div class="flex space-x-4 mt-4 md:mt-0">
                 <div class="footer-right ml-auto mt-1 mt-sm-0">
                     <div class="payment-icons">

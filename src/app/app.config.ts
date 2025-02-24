@@ -55,10 +55,11 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       NgxSpinnerModule,
       TranslateModule.forRoot({
+        defaultLanguage: 'en',
         loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
-          deps:[HttpClient]
+          deps: [HttpClient],
         },
       })
     ),

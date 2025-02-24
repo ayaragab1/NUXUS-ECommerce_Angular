@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root',
 })
 export class MyTranslateService {
-  private rendrer: Renderer2; 
+  private rendrer: Renderer2;
   constructor(
     private translateService: TranslateService,
     @Inject(PLATFORM_ID) private platId: object,

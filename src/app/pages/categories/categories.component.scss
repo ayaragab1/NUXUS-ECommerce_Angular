@@ -1,0 +1,26 @@
+
+.heading-border {
+    display: flex;
+    align-items: center;
+    margin: 0 -8px;
+  }
+.heading-border:after,
+.heading-border:before {
+  content: "";
+  margin: 0 8px;
+  flex: 1;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.heading-border.section-title {
+  margin: 0 -2rem 1.9rem;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.heading-border.section-title:after,
+.heading-border.section-title:before {
+  margin: 0 1.5rem;
+  margin-top: 2px;
+}

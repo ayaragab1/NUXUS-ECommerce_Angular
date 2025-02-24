@@ -1,25 +1,29 @@
 <section class="">
     <div class="flex justify-center align-middle text-white text-center p-2 text-sm bg-sky-700" role="alert">
         <div class="flex flex-col md:flex-row items-center">
-            <h5 class="font-normal text-white py-1">Get Up to <b>40% OFF</b> New-Season Styles</h5>
+            <h5 class="font-normal text-white py-1">{{'navbar.offer' | translate}}<b>{{'navbar.40%' | translate}}
+                </b>{{'navbar.allNew' | translate}}</h5>
             <div class="flex mt-2 md:mt-0 md:ml-2">
-                <a routerLink="/category" class="bg-sky-600 px-2 py-1 ms-2">MEN</a>
-                <a routerLink="/category" class="bg-sky-600 px-2 py-1 ms-2">WOMEN</a>
+                <a routerLink="/category" class="bg-sky-600 px-2 py-1 ms-2">{{'navbar.men' | translate}}</a>
+                <a routerLink="/category" class="bg-sky-600 px-2 py-1 ms-2">{{'navbar.women' | translate}}</a>
             </div>
-            <small class="lg:mt-2 md:mt-0 md:ms-2 py-1 text-gray-300">* Limited time only.</small>
+            <small class="lg:mt-2 md:mt-0 md:ms-2 py-1 text-gray-300">{{'navbar.limited_time' | translate}}</small>
         </div>
     </div>
 
     <nav class="bg-gray-50 border-gray-200 dark:bg-gray-900 p-4 md:p-0">
         <div class="flex flex-col md:flex-row flex-wrap justify-between items-center mx-auto max-w-screen-xl gap-4">
             <!-- Logo -->
-            <a routerLink="/home" class="flex justify-center items-center w-full md:w-auto md:flex-none md:max-w-[150px]">
+            <a routerLink="/home"
+                class="flex justify-center items-center w-full md:w-auto md:flex-none md:max-w-[150px]">
                 <img src="/images/nexus-market-logo.svg" class="w-2/6 md:w-full" alt="Flowbite Logo" />
             </a>
-    
+
             <!-- Search Bar -->
             <form class="w-full order-last md:order-none md:flex-1 md:max-w-[600px] lg:max-w-[800px]">
-                <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <label for="default-search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">{{'navbar.search' |
+                    translate}}</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -30,17 +34,19 @@
                     </div>
                     <input type="search" id="default-search"
                         class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:border-gray-400 focus:shadow-md placeholder:text-gray-600"
-                        placeholder="Search Clothes, Mobile ..." required />
+                        [placeholder]="'navbar.search_placeholder' | translate" required />
                     <button type="submit"
                         class="text-white absolute end-2.5 bottom-2.5 bg-sky-600 hover:bg-sky-700 transition-colors duration-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
                 </div>
             </form>
-    
+
             <!-- Phone Number and Social Icons -->
-            <div class="flex flex-row justify-center items-center md:space-y-0 md:space-x-6 rtl:space-x-reverse w-full md:w-auto">
-                <a href="tel:5541251234" class="text-sm text-gray-500 dark:text-white hover:underline">(555) 412-1234</a>
+            <div
+                class="flex flex-row justify-center items-center md:space-y-0 md:space-x-6 rtl:space-x-reverse w-full md:w-auto">
+                <a href="tel:5541251234" class="text-sm text-gray-500 dark:text-white hover:underline">(555)
+                    412-1234</a>
                 <span class="separator d-lg-block"></span>
-    
+
                 <div class="social-icons flex">
                     <a href="https://www.facebook.com/share/1A3CAVDU18/?mibextid=wwXIfr"
                         class="social-icon social-facebook icon-facebook" target="_blank" rel="noopener"
@@ -57,65 +63,110 @@
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </div>
+
+                <span class="separator d-lg-block"></span>
+
+
+                <button title="lang" id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" data-dropdown-trigger="hover"
+                class="z-50 relative inline-flex items-center text-sm font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none dark:hover:text-white dark:text-gray-400"
+                type="button">
+                <i class="fa-solid fa-earth-americas"></i>
+              </button>
+              
+              <!-- Dropdown menu -->
+              <div id="dropdownNotification" #dropdownNotification
+                class="z-50 hidden w-20 max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow-sm"
+                aria-labelledby="dropdownNotificationButton">
+                <div class="divide-y divide-gray-100">
+                  <!-- English Option -->
+                  <a [class.hidden]="currentLang('en')" (click)="changeLang('en')" class="flex px-2 py-1 hover:bg-gray-200">
+                    <div class="w-full ps-3">
+                      <div class="text-gray-500 text-sm mb-1 dark:text-gray-400">
+                        <span class="font-semibold text-gray-900 dark:text-white"><small>English</small></span>
+                      </div>
+                    </div>
+                  </a>
+              
+                  <!-- Arabic Option -->
+                  <a [class.hidden]="currentLang('ar')" (click)="changeLang('ar')" class="flex px-2 py-1 hover:bg-gray-200">
+                    <div class="w-full ps-3">
+                      <div class="text-gray-500 text-sm mb-1 dark:text-gray-400">
+                        <span class="font-semibold text-gray-900 dark:text-white"><small>Arabic</small></span>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+
             </div>
         </div>
     </nav>
     <nav class="bg-gray-100 border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      
+
             <!-- Burger Menu Button (Mobile) -->
             <button data-collapse-toggle="navbar-default" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 aria-controls="navbar-default" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 17 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
             </button>
-    
+
             <!-- Navigation Links -->
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-gray-100 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <ul
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-gray-100 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
                         <a routerLink="/home" routerLinkActive="active"
                             class="block py-2 text-sm  px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-white md:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                            aria-current="page">Home</a>
+                            aria-current="page">{{'navbar.home' | translate}}</a>
                     </li>
                     <li>
                         <a routerLink="/products" routerLinkActive="active"
-                            class="block py-2 text-sm  px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-white md:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Products</a>
+                            class="block py-2 text-sm  px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-white md:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{'navbar.products'
+                            | translate}}</a>
                     </li>
                     <li>
                         <a routerLink="/categories" routerLinkActive="active"
-                            class="block py-2 text-sm  px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-white md:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Categories</a>
+                            class="block py-2 text-sm  px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-white md:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{'navbar.categories'
+                            | translate}}</a>
                     </li>
                     <li>
-                        <a routerLink="/about" routerLinkActive="active"
-                            class="block py-2 text-sm  px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-white md:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+                        <a routerLink="/brands" routerLinkActive="active"
+                            class="block py-2 text-sm  px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-white md:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">{{'navbar.brands'
+                            | translate}}</a>
                     </li>
-                    <li>
-                        <a routerLink="/Contact" routerLinkActive="active"
-                            class="block py-2 text-sm  px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-white md:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact Us</a>
-                    </li>
+                  
                 </ul>
             </div>
-    
+
             <!-- Cart, Wishlist, and User Icons -->
             <div class="flex items-center space-x-6">
-                <a routerLink="/cart">
-                    <i class="fa-solid fa-cart-shopping text-2xl text-sky-700" title="Cart"></i>
+                <a routerLink="/cart"   class="relative" routerLinkActive="active-cart">
+                    <i class="fa-solid fa-cart-shopping text-2xl text-sky-700" [title]="'cart.cart' | translate"></i>
+                    <div
+                        class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+                        {{cartCount}}</div>
+
+
                 </a>
-                <a routerLink="/wishlist">
-                    <i class="fa-solid fa-heart text-2xl text-sky-700" title="Wish List"></i>
+                <a routerLink="/wishlist" routerLinkActive="active-wish">
+                    <i class="fa-solid fa-heart text-2xl text-sky-700" [title]="'wishlist.wishlist' | translate"></i>
                 </a>
                 @if(isLoggedIn) {
                 <span class="flex items-center gap-2">
                     <i class="fa-solid fa-user text-2xl pe-1 text-sky-700"></i>
                     <span class="flex flex-col leading-tight text-center">
-                        <span class="font-medium text-xs text-gray-500">Welcome <b>User</b></span>
+                        <span class="font-medium text-xs text-gray-500">{{'navbar.welcome' | translate}}
+                            <b>{{'navbar.user' | translate}}</b></span>
                         <a (click)="logout()">
-                            <span class="text-sm text-sky-700 hover:underline cursor-pointer">Logout</span>
+                            <span class="text-sm text-sky-700 hover:underline cursor-pointer">{{'navbar.logout' |
+                                translate}}</span>
                         </a>
                     </span>
                 </span>
@@ -123,9 +174,9 @@
                 <span class="flex items-center gap-2">
                     <i class="fa-solid fa-user text-2xl pe-1 text-sky-700"></i>
                     <span class="flex flex-col leading-tight">
-                        <span class="font-medium text-xs text-gray-500 ps-2">Welcome</span>
+                        <span class="font-medium text-xs text-gray-500 ps-2">{{'navbar.welcome' | translate}}</span>
                         <a routerLink="/login">
-                            <span class="text-sm text-sky-700 hover:underline">Login / Register</span>
+                            <span class="text-sm text-sky-700 hover:underline">{{'navbar.login' | translate}}</span>
                         </a>
                     </span>
                 </span>

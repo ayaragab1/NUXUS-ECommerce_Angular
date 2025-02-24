@@ -4,10 +4,11 @@ import { Icart } from '../../shared/interfaces/icart';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
-  imports: [RouterLink, CurrencyPipe],
+  imports: [RouterLink, CurrencyPipe , TranslatePipe],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
 })
@@ -35,6 +36,7 @@ export class CartComponent implements OnInit {
     this.cartService.deleteItemFromCart(id).subscribe({
       next: (res) => {
         this.cartData = res;
+        this.cartService.cartItemsNumber.next(res.numOfCartItems);
       },
       error: (err) => {
         console.log(err);
@@ -71,7 +73,7 @@ export class CartComponent implements OnInit {
             if (res.message == 'success') {
               this.cartData = {} as Icart;
               Swal.fire('Deleted!', 'Your Cart is Empty.', 'success');
-              console.log(this.cartData);
+              this.cartService.cartItemsNumber.next(0);
             }
           },
           error: (err) => {

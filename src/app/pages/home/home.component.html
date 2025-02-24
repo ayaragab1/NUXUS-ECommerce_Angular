@@ -6,37 +6,37 @@
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
         <img src="/images/slider/slider-furniture3.jpg"
           class="absolute block w-full h-full object-cover md:-translate-x-1/2 md:-translate-y-1/2 md:top-1/2 md:left-1/2"
-          alt="...">
+          alt="Products">
       </div>
       <!-- Item 2 -->
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
         <img src="/images/slider/slider-organic2.jpg"
           class="absolute block w-full h-full object-cover md:-translate-x-1/2 md:-translate-y-1/2 md:top-1/2 md:left-1/2"
-          alt="...">
+          alt="Products">
       </div>
       <!-- Item 3 -->
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
         <img src="/images/slider/slider-camping.jpg"
           class="absolute block w-full h-full object-cover md:-translate-x-1/2 md:-translate-y-1/2 md:top-1/2 md:left-1/2"
-          alt="...">
+          alt="Products">
       </div>
       <!-- Item 4 -->
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
         <img src="/images/slider/slider-decor2.jpg"
           class="absolute block w-full h-full object-cover md:-translate-x-1/2 md:-translate-y-1/2 md:top-1/2 md:left-1/2"
-          alt="...">
+          alt="Products">
       </div>
       <!-- Item 5 -->
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
         <img src="/images/slider/slider-fashion-cosmetic2.jpg"
           class="absolute block w-full h-full object-cover md:-translate-x-1/2 md:-translate-y-1/2 md:top-1/2 md:left-1/2"
-          alt="...">
+          alt="Products">
       </div>
       <!-- Item 6 -->
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
         <img src="/images/slider/slider-fashion-cosmetic3.jpg"
           class="absolute block w-full h-full object-cover md:-translate-x-1/2 md:-translate-y-1/2 md:top-1/2 md:left-1/2"
-          alt="...">
+          alt="Products">
       </div>
     </div>
     <!-- Slider controls -->
@@ -75,8 +75,8 @@
       <div class="flex items-center gap-4 flex-1 w-full sm:w-auto">
         <i class="fa-solid fa-truck-fast text-3xl text-sky-700"></i>
         <div>
-          <h2 class="text-lg  font-semibold">FREE SHIPPING & RETURN</h2>
-          <span class="text-sm text-gray-500">Free shipping on all orders over $99.</span>
+          <h2 class="text-lg  font-semibold">{{'details.free_shipping' | translate}}</h2>
+          <span class="text-sm text-gray-500">{{'details.free_shipping_details' | translate}}</span>
         </div>
       </div>
 
@@ -86,8 +86,8 @@
       <div class="flex items-center gap-4 flex-1 w-full sm:w-auto">
         <i class="fa-solid fa-sack-dollar text-3xl text-sky-700"></i>
         <div>
-          <h2 class="text-lg font-semibold">MONEY BACK GUARANTEE</h2>
-          <span class="text-sm text-gray-500">100% money back guarantee</span>
+          <h2 class="text-lg font-semibold">{{'details.money_back' | translate}}</h2>
+          <span class="text-sm text-gray-500">{{'details.money_back_details' | translate}}</span>
         </div>
       </div>
 
@@ -98,8 +98,8 @@
       <div class="flex items-center gap-4 flex-1 w-full sm:w-auto">
         <i class="fa-solid fa-headset text-3xl text-sky-700"></i>
         <div>
-          <h2 class="text-lg font-semibold">ONLINE SUPPORT 24/7</h2>
-          <span class="text-sm text-gray-500">Always With you 24/7 for support</span>
+          <h2 class="text-lg font-semibold">{{'details.online_support' | translate}}</h2>
+          <span class="text-sm text-gray-500">{{'details.online_support_details' | translate}}</span>
         </div>
       </div>
     </div>
@@ -118,11 +118,11 @@
           @for (categ of categories; track categ._id) {
 
           <div class="swiper-slide swiper-slide-active" style="width: 205px;">
-            <div class="collection-circle hover-img"><a class="img-style" href="/shop-collection"><img
+            <div class="collection-circle hover-img"><a class="img-style" ><img
                   alt="collection-img" loading="lazy" decoding="async" data-nimg="1" class="lazyload "
                   style="color:transparent" [src]="categ.image"></a>
               <div class="collection-content text-center">
-                <div><a class="cls-title" href="/shop-collection">
+                <div><a class="cls-title" >
                     <h6 class="text">{{categ.name}}</h6><i class="fa-regular fa-eye"></i>
                   </a></div>
               </div>
@@ -144,7 +144,7 @@
 <section class="products-list my-4">
   <div class="container">
     <div class="py-3">
-      <h2 class="section-title heading-border  font-semibold w-75 mx-auto text-lg text-sky-700">New Arrivals</h2>
+      <h2 class="section-title heading-border  font-semibold w-75 mx-auto text-lg text-sky-700">{{'new_arrivals' | translate}}</h2>
       <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         @for (product of products.slice(0, 12); track product.id) {
         <div class="active">
@@ -182,7 +182,7 @@
                 </a>
               </div>
               <div class="product-action mt-3">
-                <a routerLink="/wishlist" class="btn-icon-wish" title="wishlist"><i class="fa-regular fa-heart"></i></a>
+                <a (click)="addToWishlist(product.id)" class="btn-icon-wish" title="wishlist"><i class="fa-regular fa-heart"></i></a>
                 <a (click)="addToCart(product.id)" class="btn-icon btn-add-cart"><i class="fa fa-arrow-right"></i><span>Add To card
               
                 </span></a>

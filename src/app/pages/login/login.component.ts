@@ -9,10 +9,11 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { Notyf } from 'notyf';
 import { NOTYF } from '../../shared/utilities/notyf.token';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink ,  ReactiveFormsModule,],
+  imports: [RouterLink ,  ReactiveFormsModule, TranslatePipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

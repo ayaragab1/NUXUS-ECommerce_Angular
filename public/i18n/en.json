@@ -1,6 +1,180 @@
 {
-    "home": "Home",
-    "products": "Products",
-    "categories": "Categories",
-    "brands": "Brands"
+    "navbar": {
+        "welcome": "Welcome",
+        "user": "User",
+        "home": "Home",
+        "products": "Products",
+        "categories": "Categories",
+        "brands": "Brands",
+        "contact": "Contact us",
+        "login": "Login",
+        "register": "Regitser",
+        "logout": "Logout",
+        "Lang": "Lang",
+        "offer": "Get Up to ",
+        "40%": " 40% OFF",
+        "allNew": "New-Season Styles",
+        "men": "MEN",
+        "women": "WOMEN",
+        "limited_time": "* Limited time only.",
+        "search": "Search",
+        "search_placeholder": "Search Clothes, Mobile ..."
+    },
+    "details": {
+        "free_shipping": "FREE SHIPPING & RETURN",
+        "free_shipping_details": "Free shipping on all orders over $99.",
+        "money_back": "MONEY BACK GUARANTEE",
+        "money_back_details": "100% money back guarantee",
+        "online_support": "ONLINE SUPPORT 24/7",
+        "online_support_details": "Always with you 24/7 for support"
+    },
+    "new_arrivals": "New Arrivals",
+    "footer": {
+        "getInTouch": {
+            "title": "Get In Touch",
+            "addressLabel": "ADDRESS:",
+            "address": "123 Street Name, New Cairo, Egypt",
+            "phoneLabel": "PHONE:",
+            "phone": "Toll Free (123) 456-7890",
+            "emailLabel": "EMAIL:",
+            "email": "ayaragab1699@gmail.com"
+        },
+        "customerServices": {
+            "title": "Customer Services",
+            "help": "Help & FAQs",
+            "orderTracking": "Order Tracking",
+            "shipping": "Shipping & Delivery",
+            "orderHistory": "Orders History",
+            "login": "Login",
+            "aboutUs": "About Us"
+        },
+        "subscribeNewsletter": {
+            "title": "Subscribe Newsletter",
+            "description": "Get all the latest information on events, sales, and offers. Sign up for the newsletter:",
+            "emailPlaceholder": "Email address",
+            "button": "OK"
+        },
+        "copyright": "Nexus eCommerce. © 2021. All Rights Reserved."
+    },
+    "cart": {
+      "des":"Your products is ready, let's containue to checkout",
+        "cart": "عربة التسوق",
+        "yourCart": "Your Cart",
+        "product": "Product",
+        "price": "Price",
+        "quantity": "Quantity",
+        "total": "Total",
+        "empty_cart": "Empty Cart",
+        "continue_shopping": "Continue Shopping",
+        "checkout": "Check Out"
+    },
+    "login_page": {
+        "emailAddress": "Email",
+        "password": "Password",
+        "forgot_password": "Forgot Password",
+        "new_user": "New User?",
+        "sign_up": "Sign up",
+        "email_required": "Email is required",
+        "email_invalid": "Please enter a valid email address",
+        "password_required": "Password is required",
+        "password_pattern": "Password must start with an uppercase letter and be at least 6 characters long"
+    
+    },
+    "wishlist":{
+        "wishlist": "Wishlist",
+        "des":"Your favourite products saved for you !!"
+    },
+    "register": {
+    "title": "Register",
+    "name": {
+      "label": "Name",
+      "errors": {
+        "required": "Name is required",
+        "minlength": "Name should be more than or equal to 3 characters",
+        "maxlength": "Name should be less than or equal to 20 characters"
+      }
+    },
+    "email": {
+      "label": "Email",
+      "errors": {
+        "required": "Email is required",
+        "email": "Please enter a valid email address"
+      }
+    },
+    "password": {
+      "label": "Password",
+      "errors": {
+        "required": "Password is required",
+        "pattern": "Password must start with an uppercase letter and be at least 6 characters long"
+      }
+    },
+    "rePassword": {
+      "label": "Confirm Password",
+      "errors": {
+        "missMatch": "Confirm Password is incorrect"
+      }
+    },
+    "phone": {
+      "label": "Phone",
+      "errors": {
+        "required": "Phone is required",
+        "pattern": "Only Egyptian phone numbers are accepted"
+      }
+    },
+    "submitButton": "Register",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign In"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "verifyEmail": {
+      "email": {
+        "label": "Email",
+        "errors": {
+          "required": "Email is required",
+          "email": "Please enter a valid email address"
+        }
+      },
+      "verifyButton": "Verify Email",
+      "loginLink": "Click here to login"
+    },
+    "verifyCode": {
+      "title": "Forgot Password",
+      "subtitle": "Please enter the code you received via email",
+      "code": {
+        "label": "Code",
+        "errors": {
+          "required": "Code is required",
+          "pattern": "Please enter a valid code"
+        }
+      },
+      "verifyButton": "Verify Code",
+      "loginLink": "Click here to login"
+    },
+    "resetPassword": {
+      "title": "Forgot Password",
+      "subtitle": "Please enter the new password",
+      "email": {
+        "label": "Email",
+        "errors": {
+          "required": "Email is required",
+          "email": "Please enter a valid email address"
+        }
+      },
+      "newPassword": {
+        "label": "New Password",
+        "errors": {
+          "required": "Password is required",
+          "pattern": "Password must start with an uppercase letter and be at least 6 characters long"
+        }
+      },
+      "changePasswordButton": "Change Password"
+    }
+  },
+  "allProducts":"All Products",
+  "allBrands":"All Brands",
+  "allCategories":"All Categories"
+
+
+    
 }

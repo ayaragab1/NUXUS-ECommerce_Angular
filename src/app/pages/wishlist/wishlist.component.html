@@ -1,11 +1,9 @@
-@if(cartData.data.totalCartPrice > 0){
-<div class="flex justify-end me-24">
-    <button type="button" (click)="emptyCartItems()" class="text-end w-fit  text-white bg-red-500 px-5 py-2 mt-3 rounded-lg"> Empty Cart</button>
-</div>
-<section class="flex justify-center align-middle mb-7">
-    <div class="gi-cart-leftside min-[992px]:w-[66.66%] w-full px-[12px] max-[991px]:mt-[20px]">
-        <h1 class=" font-semibold text-sky-700 text-2xl mt-5 text-center  mb-2">{{'cart.yourCart' |translate}}</h1>
-        <h1 class=" font-semibold text-gray-400 text-center mb-10">{{'cart.des' |translate}}</h1>
+@if(wishlistData.length > 0){
+
+<section class="flex justify-center align-middle my-7">
+    <div class="gi-cart-leftside min-[992px]:w-[66.66%] w-full px-[12px] max-[991px]:mt-[30px]">
+        <h1 class=" font-semibold text-sky-700 text-2xl mt-5 text-center  mb-2">{{'wishlist.wishlist' |translate}}</h1>
+        <h1 class=" font-semibold text-gray-400 text-center mb-10">{{'wishlist.des' |translate}}</h1>
         <!-- cart content Start -->
         <div class="gi-cart-content">
             <div class="gi-cart-inner">
@@ -22,17 +20,15 @@
                                         <th
                                             class="text-[#4b5966] text-[15px] font-bold pt-[15px] pb-[12px] px-[14px] text-left capitalize align-middle whitespace-nowrap leading-[1] tracking-[0]">
                                             Price</th>
-                                        <th
-                                            class="text-[#4b5966] text-[15px] font-bold pt-[15px] pb-[12px] px-[14px] text-center capitalize align-middle whitespace-nowrap leading-[1] tracking-[0]">
-                                            Quantity</th>
+
                                         <th
                                             class="text-[#4b5966] text-[15px] font-bold pt-[15px] pb-[12px] px-[14px] text-left capitalize align-middle whitespace-nowrap leading-[1] tracking-[0]">
                                             Total</th>
-                                        <th></th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @for (item of cartData.data.products; track item._id) {
+                                    @for (item of wishlistData; track item._id) {
                                     <tr
                                         class="border-b-[1px] border-solid border-[#eee] max-[767px]:border-[1px] max-[767px]:block max-[767px]:mb-[15px]">
 
@@ -40,41 +36,34 @@
                                             class="gi-cart-pro-name w-[40%] text-[#4b5966] text-[16px] py-[15px] px-[14px] text-left max-[767px]:w-full max-[767px]:border-b-[1px] max-[767px]:border-solid max-[767px]:border-[#eee] max-[767px]:flex max-[767px]:justify-between max-[767px]:items-center max-[767px]:text-[14px] max-[767px]:py-[8px] max-[767px]:px-[10px]">
                                             <a href="product-left-sidebar.html"
                                                 class="text-[#777] font-normal text-[14px] flex leading-[1.5] tracking-[0.6px] items-center">
-                                                <img class="gi-cart-pro-img w-[60px] mr-[15px]"
-                                                    [src]="item.product.imageCover" alt="">
-                                                {{item.product.title}}
+                                                <img class="gi-cart-pro-img w-[60px] mr-[15px]" [src]="item.imageCover"
+                                                    alt="">
+                                                {{item.title}}
                                             </a>
                                         </td>
                                         <td data-label="Price"
                                             class="gi-cart-pro-price text-[#4b5966] font-medium text-[15px] py-[15px] px-[14px] text-left max-[767px]:border-b-[1px] max-[767px]:border-solid max-[767px]:border-[#eee] max-[767px]:flex max-[767px]:justify-between max-[767px]:items-center max-[767px]:text-[14px] max-[767px]:py-[8px] max-[767px]:px-[10px]">
                                             <span class="amount tracking-[0.02rem]">{{item.price | currency}}</span>
                                         </td>
-                                        <td data-label="Quantity"
-                                            class="gi-cart-pro-qty text-[#4b5966] text-[16px] py-[15px] px-[14px] text-center max-[767px]:border-b-[1px] max-[767px]:border-solid max-[767px]:border-[#eee] max-[767px]:flex max-[767px]:justify-between max-[767px]:items-center max-[767px]:text-[14px] max-[767px]:py-[8px] max-[767px]:px-[10px]">
-                                            <div
-                                                class="cart-qty-plus-minus border-[1px] border-solid border-[#eee] rounded-[5px] h-[35px] overflow-hidden p-[0] relative w-[84px] flex items-center justify-between my-[0] mx-auto max-[767px]:m-[0]">
-                                                <input readonly
-                                                    class="cart-plus-minus border-[0] text-[#4b5966] float-left text-[14px] h-auto m-[0] p-[0] text-center w-[40px] outline-[0] leading-[38px] font-semibold"
-                                                    type="text" name="cartqtybutton" [value]="item.count"
-                                                    title="Quantity" placeholder="Enter quantity">
-                                                <div class="ms_cart_qtybtn">
-                                                    <div class="inc ms_qtybtn"
-                                                        (click)="updateCartItemQuantity(item.product.id , item.count +1)">
-                                                        +</div>
-                                                    <div class="dec ms_qtybtn"
-                                                        (click)="updateCartItemQuantity(item.product.id , item.count -1)">
-                                                        -</div>
-                                                </div>
-                                            </div>
-                                        </td>
+
                                         <td data-label="Total"
                                             class="gi-cart-pro-subtotal text-[#4b5966] text-[15px] font-medium py-[15px] px-[14px] text-left max-[767px]:border-b-[1px] max-[767px]:border-solid max-[767px]:border-[#eee] max-[767px]:flex max-[767px]:justify-between max-[767px]:items-center max-[767px]:text-[14px] max-[767px]:py-[8px] max-[767px]:px-[10px]">
                                             $56.00</td>
                                         <td data-label="Remove"
-                                            class="gi-cart-pro-remove text-[#4b5966] w-[90px] text-[16px] py-[15px] px-[14px] text-right max-[767px]:border-b-[1px] max-[767px]:border-solid max-[767px]:border-[#eee] max-[767px]:flex max-[767px]:justify-between max-[767px]:items-center max-[767px]:text-[14px] max-[767px]:py-[8px] max-[767px]:px-[10px]">
-                                            <a (click)="deleteItemFromCart(item.product.id)"
-                                                class="text-[22px] my-[0] mx-auto"><i
-                                                    class="fa-solid fa-trash-can"></i></a>
+                                            class="gi-cart-pro-remove text-[#4b5966] w-[90px] text-[16px] py-[15px] text-right max-[767px]:border-b-[1px] max-[767px]:border-solid max-[767px]:border-[#eee] max-[767px]:flex max-[767px]:justify-between max-[767px]:items-center max-[767px]:text-[14px] max-[767px]:py-[8px] max-[767px]:px-[10px]">
+
+                                            <a class="text-lg my-[0] mx-auto me-3" title="Add to cart"
+                                                (click)="addToCart(item.id)"><i
+                                                    class="fa-solid fa-square-plus hover:text-green-600"></i></a>
+
+                                            <a [routerLink]="['/product-details', item.id]"
+                                                class="text-lg my-[0] mx-auto me-3" title="View"><i
+                                                    class="fa-solid fa-eye  hover:text-blue-600"></i></a>
+
+                                            <a class="text-lg my-[0] mx-auto" title="Delete"
+                                                (click)="deleteFromWishlist(item.id)"><i
+                                                    class="fa-solid fa-trash-can  hover:text-red-600"></i></a>
+
                                         </td>
                                     </tr>
                                     }
@@ -88,10 +77,7 @@
                                     <a routerLink="/home"
                                         class="text-[#4b5966] inline-block underline text-[15px] leading-[20px] font-medium tracking-[0.8px]">Continue
                                         Shopping</a>
-                                    <button type="button" [routerLink]="['/checkout', cartData.cartId]" class="gi-btn-2 transition-all duration-[0.3s] ease-in-out overflow-hidden 
-                                        text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px]
-                                         bg-yellow-500 text-[#fff] border-[0] text-[14px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center
-                                          hover:bg-yellow-400 hover:text-[#fff]">Check Out</button>
+
                                 </div>
                             </div>
                         </div>
@@ -106,7 +92,7 @@
 <div class="my-28 flex justify-center  align-middle ">
     <div class="py-4 px-8 mb-4  text-blue-800 rounded-lg  text-center bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
         role="alert">
-        <span class="font-medium">Yout Cart is Empty</span> Start Shopping Now
+        <span class="font-medium">Yout Wishlist is Empty</span> Start Shopping Now
         <div> <a routerLink="/home" class="font-bold underline">Go To Home</a></div>
     </div>
 </div>

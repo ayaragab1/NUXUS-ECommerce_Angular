@@ -1,3 +1,4 @@
+import { IBrand } from "./ibrand"
 import { Icategory } from "./icategory"
 
 export interface IProduct {
@@ -27,10 +28,3 @@ export interface ISubcategory {
   category: string
 }
 
-
-export interface IBrand {
-  _id: string
-  name: string
-  slug: string
-  image: string
-}

@@ -7,13 +7,13 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { Router } from '@angular/router';
-import { error } from 'console';
 import { Notyf } from 'notyf';
 import { NOTYF } from '../../shared/utilities/notyf.token';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-forgetpassword',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule , TranslatePipe],
   templateUrl: './forgetpassword.component.html',
   styleUrl: './forgetpassword.component.scss',
 })
@@ -61,6 +61,8 @@ export class ForgetpasswordComponent {
           this.notyf.error(err.error.message);
           },
       });
+    }else{
+      this.verifyEmail.markAllAsTouched();
     }
   }
   onSubmitResetCode(): void {
@@ -78,6 +80,9 @@ export class ForgetpasswordComponent {
           this.notyf.error(err.error.message);
         },
       });
+    }else{
+      this.verifyCode.markAllAsTouched();
+
     }
   }
 
@@ -101,5 +106,9 @@ export class ForgetpasswordComponent {
         },
       });
     }
+    else{
+      this.resetPassword.markAllAsTouched();
+    }
   }
+  
 }

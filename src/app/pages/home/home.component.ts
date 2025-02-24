@@ -10,9 +10,11 @@ import { Router, RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/carts/cart.service';
 import { Notyf } from 'notyf';
 import { NOTYF } from '../../shared/utilities/notyf.token';
+import { TranslatePipe } from '@ngx-translate/core';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 @Component({
   selector: 'app-home',
-  imports: [CurrencyPipe, RouterLink],
+  imports: [CurrencyPipe, RouterLink, TranslatePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
   private readonly productsService = inject(ProductsService);
   private readonly categoryService = inject(CategoryService);
   private readonly cartService = inject(CartService);
+  private readonly wishlistService = inject(WishlistService);
   private readonly route = inject(Router);
 
   private readonly iD = inject(PLATFORM_ID);
@@ -116,6 +119,8 @@ export class HomeComponent implements OnInit {
             this.isLoading = false;
 
             this.notyf.success(res.message);
+
+            this.cartService.cartItemsNumber.next(res.numOfCartItems);
           },
           error: (err) => {
             this.isLoading = false;
@@ -127,5 +132,13 @@ export class HomeComponent implements OnInit {
         });
       }
     }
+  }
+
+  addToWishlist(prodId: string): void {
+    this.wishlistService.addToWishlist(prodId).subscribe({
+      next: (res) => {
+        this.notyf.success(res.message);
+      }
+    });
   }
 }

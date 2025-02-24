@@ -1,7 +1,7 @@
 <section class="loginForm">
     <div class="w-11/12 lg:w-6/12  mx-auto border shadow-lg rounded-md  my-20">
         <div class="">
-            <h1 class=" font-semibold text-sky-700 text-xl my-5 text-center">Login</h1>
+            <h1 class=" font-semibold text-sky-700 text-xl my-5 text-center">{{'navbar.login' |translate}}</h1>
             <div class="">
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
 
@@ -9,10 +9,13 @@
                         <div class="relative">
 
                             <input type="email" id="email" formControlName="email"
-                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-1 border-gray-300 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-sky-700 peer"
+                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm
+                                 text-gray-900 bg-gray-50 rounded-lg border-1
+                                  border-gray-300 appearance-none dark:text-white
+                                   focus:outline-none focus:ring-0 focus:border-sky-700 peer"
                                 placeholder=" " />
                             <label for="email"
-                                class="absolute text-sm  text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2  peer-focus:text-lg peer-focus:text-sky-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Email</label>
+                                class="absolute text-sm  text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2  peer-focus:text-lg peer-focus:text-sky-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">{{'login_page.emailAddress' |translate}}</label>
 
                         </div>
                         @let email = loginForm.get('email');
@@ -28,10 +31,10 @@
                             <div>
                                 <ul class="mt-1.5 list-disc list-inside">
                                     @if(email?.getError('required')){
-                                    <li>Email is required</li>
-                                    }
+                                        <li>{{ 'login_page.email_required' | translate }}</li>
+                                    } 
                                     @else if(email?.getError('email')){
-                                    <li>Please Enter a valid email address</li>
+                                        <li>{{ 'login_page.email_invalid' | translate }}</li>
                                     }
                                 </ul>
                             </div>
@@ -47,7 +50,7 @@
                                 class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-1 border-gray-300 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-sky-700 peer"
                                 placeholder=" " />
                             <label for="password"
-                                class="absolute text-sm  text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2  peer-focus:text-lg peer-focus:text-sky-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Password</label>
+                                class="absolute text-sm  text-gray-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2  peer-focus:text-lg peer-focus:text-sky-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">{{'login_page.password' |translate}}</label>
 
                         </div>
                         @let password = loginForm.get('password');
@@ -63,19 +66,17 @@
                             <div>
                                 <ul class="mt-1.5 list-disc list-inside">
                                     @if(password?.getError('required')){
-                                    <li>Password is required</li>
-
-                                    }
+                                        <li>{{ 'login_page.password_required' | translate }}</li>
+                                    } 
                                     @else if(password?.getError('pattern')){
-                                    <li>Password must start with upperCase then from 6 to more any chars </li>
-
+                                        <li>{{ 'login_page.password_pattern' | translate }}</li>
                                     }
                                 </ul>
                             </div>
                         </div>
                         }
                         <div class="text-end mt-1">
-                            <a routerLink="/forget" class="text-sm  text-gray-600 hover:text-gray-900 underline">Forget Password</a>
+                            <a routerLink="/forget" class="text-sm  text-gray-600 hover:text-gray-900 underline">{{'login_page.forgot_password' |translate}}</a>
                         </div>
 
                     </div>
@@ -88,14 +89,14 @@
                          hover:bg-gradient-to-br focus:ring-4 focus:outline-none 
                          focus:ring-blue-300 dark:focus:ring-sky-800 font-medium 
                          rounded-lg text-md px-7 py-1 text-center me-2 mb-2
-                         disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-60">Login
+                         disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-60">{{'navbar.login' |translate}}
                             @if(isLoading){
                             <span> <i class="fas fa-spin fa-spinner"></i></span>
 
                             }</button>
                         <a routerLink="/register">
-                            <span class="text-sm  text-gray-600 hover:text-gray-900">New User? <b
-                                    class="underline cursor-pointer">Sign up</b> </span> </a>
+                            <span class="text-sm  text-gray-600 hover:text-gray-900">{{'login_page.new_user' |translate}} <b
+                                    class="underline cursor-pointer">{{'login_page.sign_up' |translate}}</b> </span> </a>
 
                     </div>
 

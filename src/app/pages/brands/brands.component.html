@@ -1,1 +1,18 @@
-<p>brands works!</p>
+<div class="container mx-auto px-4 py-8">
+    <h2 class="section-title heading-border  font-semibold w-75 mx-auto text-lg text-sky-700">{{'allBrands' | translate}}</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+        @for (brand of brandsData; track brand._id) {
+            <div class="product-category text-center bg-sky-50 border border-gray-100">
+                <a href="#" class="block">
+                    <figure class="overflow-hidden rounded-lg shadow-lg">
+                        <img [src]="brand.image" alt="Category" class="w-full h-40 object-cover">
+                    </figure>
+                    <div class="category-content mt-4">
+                        <h3 class="text-lg font-semibold text-sky-700 my-3">{{brand.name}}</h3>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
