@@ -8,8 +8,8 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { Notyf } from 'notyf';
-import { NOTYF } from '../../shared/utilities/notyf.token';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -18,11 +18,11 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  constructor(@Inject(NOTYF) private notyf: Notyf) {}
 
   isLoading: boolean = false;
 
   private readonly authService = inject(AuthService);
+  private readonly toastrService = inject(ToastrService);
   private readonly router = inject(Router);
 
   loginForm: FormGroup = new FormGroup({
@@ -40,7 +40,7 @@ export class LoginComponent {
       this.authService.loginUser(this.loginForm.value).subscribe({
         next: (res) => {
           if (res.message == 'success') {
-            this.notyf.success('LoggedIn Successfully🎉');
+            this.toastrService.success('LoggedIn Successfully🎉');
 
             setTimeout(() => {
               //1-save token in local storage
@@ -58,7 +58,7 @@ export class LoginComponent {
         },
         error: (error) => {
           this.isLoading = false;
-          this.notyf.error(error.error.message);
+          this.toastrService.error(error.error.message);
         },
       });
     }else{

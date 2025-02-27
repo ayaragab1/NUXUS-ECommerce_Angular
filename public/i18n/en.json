@@ -18,7 +18,8 @@
         "women": "WOMEN",
         "limited_time": "* Limited time only.",
         "search": "Search",
-        "search_placeholder": "Search Clothes, Mobile ..."
+        "search_placeholder": "Search Clothes, Mobile ...",
+        "login-regitser":"Login / Register"
     },
     "details": {
         "free_shipping": "FREE SHIPPING & RETURN",
@@ -66,7 +67,10 @@
         "total": "Total",
         "empty_cart": "Empty Cart",
         "continue_shopping": "Continue Shopping",
-        "checkout": "Check Out"
+        "checkout": "Check Out",
+        "emptyList" :"Your cart is empty",
+        "start-shop":"Start shopping now",
+        "go-home":"Go to home "
     },
     "login_page": {
         "emailAddress": "Email",
@@ -82,7 +86,10 @@
     },
     "wishlist":{
         "wishlist": "Wishlist",
-        "des":"Your favourite products saved for you !!"
+        "des":"Your favourite products saved for you !!",
+        "emptyList" :"Your cart is empty",
+        "start-shop":"Start shopping now",
+        "go-home":"Go to home "
     },
     "register": {
     "title": "Register",
@@ -171,10 +178,28 @@
       "changePasswordButton": "Change Password"
     }
   },
+  "checkout":{
+    "checkout":"Checkout",
+    "details":"Address Details",
+    "details-required":"Details is required",
+    "city":"City",
+    "city-required":"City is required",
+    "phone":"Phone",
+    "phone-required":"Phone is required",
+    "phone-invalid":"Please enter a valid phone number",
+    "online-payment":"Online Payment",
+    "cash-payment":"Cash Payment"
+
+  },
   "allProducts":"All Products",
   "allBrands":"All Brands",
-  "allCategories":"All Categories"
+  "allCategories":"All Categories",
+  "continueShopping":"Continue Shopping ",
+  "price":"Price",
+  "products":"Products",
+  "total":"Total", 
+  "action":"Actions",
+  "quantity":"Quantity"
 
 
-    
 }

@@ -64,7 +64,7 @@
                         </div>
                         <hr class="mt-2" />
 
-                        <button class="bg-yellow-500 px-5 py-1 text-white my-5 hover:bg-yellow-400 transition-all duration-750">Add To Cart</button>
+                        <button (click)="addToCart(productDetails.id)" class="bg-yellow-500 px-5 py-1 text-white my-5 hover:bg-yellow-400 transition-all duration-750">Add To Cart</button>
                         <hr class="mt-2" />
                         
                         <div class="social-icons flex  align-baseline mb-5">
@@ -83,8 +83,10 @@
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
 
-                            <a  class="text-sm font-bold mt-5" title="Add to Wishlist"><i class="fa-regular fa-heart "></i><span class="ms-1">Add to
-                                Wishlist</span></a>
+                            <a (click)="addToWishlist(productDetails.id)" class="link text-sm font-bold mt-5 ms-1 cursor-pointer hover:underline hover:text-red-700" title="Add to Wishlist">
+                                <i class="fa-regular fa-heart "></i>
+                                Add to Wishlist
+                            </a>
                         </div>
                     </div>
                 </div>

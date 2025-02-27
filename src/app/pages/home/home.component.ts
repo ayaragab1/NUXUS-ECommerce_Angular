@@ -8,10 +8,9 @@ import { Swiper } from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Router, RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/carts/cart.service';
-import { Notyf } from 'notyf';
-import { NOTYF } from '../../shared/utilities/notyf.token';
 import { TranslatePipe } from '@ngx-translate/core';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home',
   imports: [CurrencyPipe, RouterLink, TranslatePipe],
@@ -19,13 +18,13 @@ import { WishlistService } from '../../core/services/wishlist/wishlist.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  constructor(@Inject(NOTYF) private notyf: Notyf) {}
 
   //Function Injection For Services
   private readonly productsService = inject(ProductsService);
   private readonly categoryService = inject(CategoryService);
   private readonly cartService = inject(CartService);
   private readonly wishlistService = inject(WishlistService);
+  private readonly toastService = inject(ToastrService);
   private readonly route = inject(Router);
 
   private readonly iD = inject(PLATFORM_ID);
@@ -109,7 +108,7 @@ export class HomeComponent implements OnInit {
   addToCart(id: string): void {
     if (isPlatformBrowser(this.iD)) {
       if (localStorage.getItem('userToken') == null) {
-        this.notyf.error('Please Login To add Product To Your Cart');
+        this.toastService.error('Please Login To add Product To Your Cart');
         this.route.navigate(['/login']);
       } else {
         this.isLoading = true;
@@ -118,16 +117,14 @@ export class HomeComponent implements OnInit {
           next: (res) => {
             this.isLoading = false;
 
-            this.notyf.success(res.message);
+            this.toastService.success(res.message);
 
-            this.cartService.cartItemsNumber.next(res.numOfCartItems);
+            this.cartService.cartItemsNumber.set(res.numOfCartItems);
           },
           error: (err) => {
             this.isLoading = false;
 
             console.log(err);
-
-            // this.notyf.error(err)
           },
         });
       }
@@ -137,7 +134,8 @@ export class HomeComponent implements OnInit {
   addToWishlist(prodId: string): void {
     this.wishlistService.addToWishlist(prodId).subscribe({
       next: (res) => {
-        this.notyf.success(res.message);
+        this.toastService.success(res.message);
+        this.wishlistService.wishlistCount.set(res.data.length)
       }
     });
   }

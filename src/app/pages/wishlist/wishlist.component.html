@@ -16,15 +16,14 @@
                                     <tr class="bg-[#fff] border-b-[2px] border-solid border-[#eee]">
                                         <th
                                             class="text-[#4b5966] text-[15px] font-bold pt-[15px] pb-[12px] px-[14px] text-left capitalize align-middle whitespace-nowrap leading-[1] tracking-[0]">
-                                            Product</th>
+                                            {{'products' |translate }}</th>
                                         <th
                                             class="text-[#4b5966] text-[15px] font-bold pt-[15px] pb-[12px] px-[14px] text-left capitalize align-middle whitespace-nowrap leading-[1] tracking-[0]">
-                                            Price</th>
+                                            {{'price' |translate }}</th>
 
                                         <th
                                             class="text-[#4b5966] text-[15px] font-bold pt-[15px] pb-[12px] px-[14px] text-left capitalize align-middle whitespace-nowrap leading-[1] tracking-[0]">
-                                            Total</th>
-                                        <th>Actions</th>
+                                            {{'action' |translate }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,10 +47,6 @@
 
                                         <td data-label="Total"
                                             class="gi-cart-pro-subtotal text-[#4b5966] text-[15px] font-medium py-[15px] px-[14px] text-left max-[767px]:border-b-[1px] max-[767px]:border-solid max-[767px]:border-[#eee] max-[767px]:flex max-[767px]:justify-between max-[767px]:items-center max-[767px]:text-[14px] max-[767px]:py-[8px] max-[767px]:px-[10px]">
-                                            $56.00</td>
-                                        <td data-label="Remove"
-                                            class="gi-cart-pro-remove text-[#4b5966] w-[90px] text-[16px] py-[15px] text-right max-[767px]:border-b-[1px] max-[767px]:border-solid max-[767px]:border-[#eee] max-[767px]:flex max-[767px]:justify-between max-[767px]:items-center max-[767px]:text-[14px] max-[767px]:py-[8px] max-[767px]:px-[10px]">
-
                                             <a class="text-lg my-[0] mx-auto me-3" title="Add to cart"
                                                 (click)="addToCart(item.id)"><i
                                                     class="fa-solid fa-square-plus hover:text-green-600"></i></a>
@@ -63,7 +58,6 @@
                                             <a class="text-lg my-[0] mx-auto" title="Delete"
                                                 (click)="deleteFromWishlist(item.id)"><i
                                                     class="fa-solid fa-trash-can  hover:text-red-600"></i></a>
-
                                         </td>
                                     </tr>
                                     }
@@ -75,8 +69,8 @@
                             <div class="w-full">
                                 <div class="gi-cart-update-bottom pt-[30px] flex justify-between">
                                     <a routerLink="/home"
-                                        class="text-[#4b5966] inline-block underline text-[15px] leading-[20px] font-medium tracking-[0.8px]">Continue
-                                        Shopping</a>
+                                        class="text-[#4b5966] inline-block underline text-[15px] leading-[20px] font-medium tracking-[0.8px]">{{'cart.continue_shopping'
+                                        |translate}}</a>
 
                                 </div>
                             </div>
@@ -92,8 +86,8 @@
 <div class="my-28 flex justify-center  align-middle ">
     <div class="py-4 px-8 mb-4  text-blue-800 rounded-lg  text-center bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
         role="alert">
-        <span class="font-medium">Yout Wishlist is Empty</span> Start Shopping Now
-        <div> <a routerLink="/home" class="font-bold underline">Go To Home</a></div>
+        <span class="font-medium">{{'wishlist.emptyList' | translate }}</span> {{'wishlist.start-shop' | translate }}
+        <div> <a routerLink="/home" class="font-bold underline">{{'wishlist.go-home' | translate }}</a></div>
     </div>
 </div>
 }

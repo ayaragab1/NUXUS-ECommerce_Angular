@@ -6,8 +6,8 @@ import { CurrencyPipe, isPlatformBrowser } from '@angular/common';
 import { CartService } from '../../core/services/carts/cart.service';
 import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 import Notyf from 'notyf/notyf';
-import { NOTYF } from '../../shared/utilities/notyf.token';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-products',
@@ -16,11 +16,11 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements OnInit {
-  constructor(@Inject(NOTYF) private notyf: Notyf) {}
 
   private readonly productsService = inject(ProductsService);
   private readonly cartService = inject(CartService);
   private readonly wishlistService = inject(WishlistService);
+  private readonly toastrService = inject(ToastrService);
   private readonly route = inject(Router);
   products: IProduct[] = [];
   private readonly iD = inject(PLATFORM_ID);
@@ -42,14 +42,14 @@ export class ProductsComponent implements OnInit {
   addToCart(id: string): void {
     if (isPlatformBrowser(this.iD)) {
       if (localStorage.getItem('userToken') == null) {
-        this.notyf.error('Please Login To add Product To Your Cart');
+        this.toastrService.error('Please Login To add Product To Your Cart');
         this.route.navigate(['/login']);
       } else {
         this.cartService.addProductToCart(id).subscribe({
           next: (res) => {
-            this.notyf.success(res.message);
+            this.toastrService.success(res.message);
 
-            this.cartService.cartItemsNumber.next(res.numOfCartItems);
+            this.cartService.cartItemsNumber.set(res.numOfCartItems);
           },
           error: (err) => {
             console.log(err);
@@ -64,7 +64,8 @@ export class ProductsComponent implements OnInit {
   addToWishlist(prodId: string): void {
     this.wishlistService.addToWishlist(prodId).subscribe({
       next: (res) => {
-        this.notyf.success(res.message);
+        this.toastrService.success(res.message);
+        this.wishlistService.wishlistCount.set(res.data.length)
       },
     });
   }

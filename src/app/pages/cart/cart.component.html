@@ -1,6 +1,6 @@
-@if(cartData.data.totalCartPrice > 0){
+@if(cartData.data !== undefined && cartData.data.totalCartPrice > 0){
 <div class="flex justify-end me-24">
-    <button type="button" (click)="emptyCartItems()" class="text-end w-fit  text-white bg-red-500 px-5 py-2 mt-3 rounded-lg"> Empty Cart</button>
+    <button type="button" (click)="emptyCartItems()" class="text-end w-fit  text-white bg-red-500 px-5 py-2 mt-3 rounded-lg">{{'cart.empty_cart' | translate}}</button>
 </div>
 <section class="flex justify-center align-middle mb-7">
     <div class="gi-cart-leftside min-[992px]:w-[66.66%] w-full px-[12px] max-[991px]:mt-[20px]">
@@ -18,16 +18,16 @@
                                     <tr class="bg-[#fff] border-b-[2px] border-solid border-[#eee]">
                                         <th
                                             class="text-[#4b5966] text-[15px] font-bold pt-[15px] pb-[12px] px-[14px] text-left capitalize align-middle whitespace-nowrap leading-[1] tracking-[0]">
-                                            Product</th>
+                                            {{'products' |translate }}</th>
                                         <th
                                             class="text-[#4b5966] text-[15px] font-bold pt-[15px] pb-[12px] px-[14px] text-left capitalize align-middle whitespace-nowrap leading-[1] tracking-[0]">
-                                            Price</th>
+                                            {{'price' |translate }}</th>
                                         <th
                                             class="text-[#4b5966] text-[15px] font-bold pt-[15px] pb-[12px] px-[14px] text-center capitalize align-middle whitespace-nowrap leading-[1] tracking-[0]">
-                                            Quantity</th>
+                                            {{'quantity' |translate }}</th>
                                         <th
                                             class="text-[#4b5966] text-[15px] font-bold pt-[15px] pb-[12px] px-[14px] text-left capitalize align-middle whitespace-nowrap leading-[1] tracking-[0]">
-                                            Total</th>
+                                            {{'total' |translate }}</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -86,12 +86,11 @@
                             <div class="w-full">
                                 <div class="gi-cart-update-bottom pt-[30px] flex justify-between">
                                     <a routerLink="/home"
-                                        class="text-[#4b5966] inline-block underline text-[15px] leading-[20px] font-medium tracking-[0.8px]">Continue
-                                        Shopping</a>
+                                        class="text-[#4b5966] inline-block underline text-[15px] leading-[20px] font-medium tracking-[0.8px]">{{'cart.continue_shopping' |translate}}</a>
                                     <button type="button" [routerLink]="['/checkout', cartData.cartId]" class="gi-btn-2 transition-all duration-[0.3s] ease-in-out overflow-hidden 
                                         text-center relative rounded-[5px] py-[10px] max-[767px]:py-[6px] px-[15px] max-[767px]:px-[10px]
                                          bg-yellow-500 text-[#fff] border-[0] text-[14px] max-[767px]:text-[13px] tracking-[0] font-medium inline-flex items-center
-                                          hover:bg-yellow-400 hover:text-[#fff]">Check Out</button>
+                                          hover:bg-yellow-400 hover:text-[#fff]">{{'cart.checkout' |translate}}</button>
                                 </div>
                             </div>
                         </div>
@@ -106,8 +105,8 @@
 <div class="my-28 flex justify-center  align-middle ">
     <div class="py-4 px-8 mb-4  text-blue-800 rounded-lg  text-center bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
         role="alert">
-        <span class="font-medium">Yout Cart is Empty</span> Start Shopping Now
-        <div> <a routerLink="/home" class="font-bold underline">Go To Home</a></div>
+        <span class="font-medium">{{'cart.emptyList' | translate }}</span> {{'cart.start-shop' | translate }}
+        <div> <a routerLink="/home" class="font-bold underline">{{'cart.go-home' | translate }}</a></div>
     </div>
 </div>
 }

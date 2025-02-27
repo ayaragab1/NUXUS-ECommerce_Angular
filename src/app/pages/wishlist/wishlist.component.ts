@@ -4,9 +4,9 @@ import { IProduct } from '../../shared/interfaces/iproduct';
 import { CurrencyPipe, isPlatformBrowser } from '@angular/common';
 import { CartService } from '../../core/services/carts/cart.service';
 import { Notyf } from 'notyf';
-import { NOTYF } from '../../shared/utilities/notyf.token';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-wishlist',
@@ -15,9 +15,9 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './wishlist.component.scss',
 })
 export class WishlistComponent implements OnInit {
-  constructor(@Inject(NOTYF) private notyf: Notyf) {}
 
   private readonly wishlistService = inject(WishlistService);
+  private readonly toastrService = inject(ToastrService);
   wishlistData: IProduct[] = [];
   cartService = inject(CartService);
   ngOnInit(): void {
@@ -35,8 +35,8 @@ export class WishlistComponent implements OnInit {
   addToCart(id: string): void {
     this.cartService.addProductToCart(id).subscribe({
       next: (res) => {
-        this.notyf.success(res.message);
-        this.cartService.cartItemsNumber.next(res.numOfCartItems);
+        this.toastrService.success(res.message);
+        this.cartService.cartItemsNumber.set(res.numOfCartItems);
       },
     });
   }
@@ -45,7 +45,8 @@ export class WishlistComponent implements OnInit {
     this.wishlistService.removeFormWishlist(id).subscribe({
       next: (res) => {
         this.getWishlistData()
-        this.notyf.success(res.message);
+        this.toastrService.success(res.message);
+        this.wishlistService.wishlistCount.set(res.data.length)
       },
     });
   }

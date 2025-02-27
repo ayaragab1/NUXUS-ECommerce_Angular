@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
     this.cartService.deleteItemFromCart(id).subscribe({
       next: (res) => {
         this.cartData = res;
-        this.cartService.cartItemsNumber.next(res.numOfCartItems);
+        this.cartService.cartItemsNumber.set(res.numOfCartItems);
       },
       error: (err) => {
         console.log(err);
@@ -56,8 +56,6 @@ export class CartComponent implements OnInit {
   }
 
   emptyCartItems() {
-    console.log(this.cartData);
-
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -73,7 +71,7 @@ export class CartComponent implements OnInit {
             if (res.message == 'success') {
               this.cartData = {} as Icart;
               Swal.fire('Deleted!', 'Your Cart is Empty.', 'success');
-              this.cartService.cartItemsNumber.next(0);
+              this.cartService.cartItemsNumber.set(0);
             }
           },
           error: (err) => {

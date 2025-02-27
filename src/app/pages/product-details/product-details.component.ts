@@ -1,23 +1,39 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {
+  Component,
+  inject,
+  OnInit,
+  PLATFORM_ID,
+  ViewChild,
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from '../../shared/interfaces/iproduct';
 import { ProductsService } from '../../core/services/products/products.service';
 import { CarouselComponent, CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, isPlatformBrowser } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from '../../core/services/carts/cart.service';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-product-details',
-  imports: [CarouselModule , CurrencyPipe],
+  imports: [CarouselModule, CurrencyPipe],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss',
 })
 export class ProductDetailsComponent implements OnInit {
-  activeRoute = inject(ActivatedRoute);
-  productsService = inject(ProductsService);
-  productDetails: IProduct = {} as IProduct;
+  private readonly activeRoute = inject(ActivatedRoute);
+  private readonly productsService = inject(ProductsService);
+  private readonly cartService = inject(CartService);
+  private readonly wishlistService = inject(WishlistService);
+  private readonly toastService = inject(ToastrService);
+  private readonly route = inject(Router);
+  private readonly iD = inject(PLATFORM_ID);
+
   largeImage: string = '';
-  @ViewChild('largeCarousel') largeCarousel: CarouselComponent = {} as CarouselComponent;
+  productDetails: IProduct = {} as IProduct;
+  @ViewChild('largeCarousel') largeCarousel: CarouselComponent =
+    {} as CarouselComponent;
   @ViewChild('thumbnailCarousel') thumbnailCarousel!: CarouselComponent;
 
   ngOnInit(): void {
@@ -33,7 +49,7 @@ export class ProductDetailsComponent implements OnInit {
     this.productsService.getProductById(pId!).subscribe({
       next: (prod) => {
         console.log(prod.data);
-        
+
         this.productDetails = prod.data;
         this.largeImage = this.productDetails.imageCover;
       },
@@ -73,9 +89,7 @@ export class ProductDetailsComponent implements OnInit {
     },
   };
 
-
   onThumbnailClick(img: string) {
-    
     if (this.largeCarousel) {
       this.largeCarousel.to(img);
     } else {
@@ -94,10 +108,37 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getStars(rating: number): number[] {
-    var nums= Array.from({ length: 5 }, (_, i) =>
+    var nums = Array.from({ length: 5 }, (_, i) =>
       i < Math.floor(rating) ? 1 : i < rating ? 0.5 : 0
     );
     return nums;
   }
+  addToCart(id: string): void {
+    if (isPlatformBrowser(this.iD)) {
+      if (localStorage.getItem('userToken') == null) {
+        this.toastService.error('Please Login To add Product To Your Cart');
+        this.route.navigate(['/login']);
+      } else {
+        this.cartService.addProductToCart(id).subscribe({
+          next: (res) => {
+            this.toastService.success(res.message);
 
+            this.cartService.cartItemsNumber.set(res.numOfCartItems);
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+      }
+    }
+  }
+
+  addToWishlist(prodId: string): void {
+    this.wishlistService.addToWishlist(prodId).subscribe({
+      next: (res) => {
+        this.toastService.success(res.message);
+        this.wishlistService.wishlistCount.set(res.data.length);
+      },
+    });
+  }
 }

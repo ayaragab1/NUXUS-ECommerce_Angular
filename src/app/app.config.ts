@@ -22,7 +22,6 @@ import {
   withFetch,
   withInterceptors,
 } from '@angular/common/http';
-import { NOTYF, notyfFactory } from './shared/utilities/notyf.token';
 import { provideToastr } from 'ngx-toastr';
 import { headersInterceptor } from './core/interceptors/headers/headers.interceptor';
 import { errorsInterceptor } from './core/interceptors/errors/errors.interceptor';
@@ -51,7 +50,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideAnimations(),
     provideToastr({ positionClass: 'toast-bottom-right' }), // Toastr providers
-    { provide: NOTYF, useFactory: notyfFactory },
     importProvidersFrom(
       NgxSpinnerModule,
       TranslateModule.forRoot({

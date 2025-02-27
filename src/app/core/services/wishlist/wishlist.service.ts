@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, signal, WritableSignal } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -8,6 +8,8 @@ import { environment } from '../../environments/environment';
 })
 export class WishlistService {
   constructor(private httpClient: HttpClient) {}
+
+  wishlistCount: WritableSignal<number> = signal(0);
 
   getWishlistData(): Observable<any> {
     return this.httpClient.get(`${environment.baseUrl}/wishlist`);

@@ -36,7 +36,7 @@
                         class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:border-gray-400 focus:shadow-md placeholder:text-gray-600"
                         [placeholder]="'navbar.search_placeholder' | translate" required />
                     <button type="submit"
-                        class="text-white absolute end-2.5 bottom-2.5 bg-sky-600 hover:bg-sky-700 transition-colors duration-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                        class="text-white absolute end-2.5 bottom-2.5 bg-sky-600 hover:bg-sky-700 transition-colors duration-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">{{'navbar.search' | translate}}</button>
                 </div>
             </form>
 
@@ -147,16 +147,21 @@
 
             <!-- Cart, Wishlist, and User Icons -->
             <div class="flex items-center space-x-6">
-                <a routerLink="/cart"   class="relative" routerLinkActive="active-cart">
+                <a routerLink="/cart"   class="relative me-4" routerLinkActive="active-cart">
                     <i class="fa-solid fa-cart-shopping text-2xl text-sky-700" [title]="'cart.cart' | translate"></i>
-                    <div
-                        class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                        {{cartCount}}</div>
+                    <div 
+                    class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+                    {{cartCount()}}</div>
 
 
                 </a>
-                <a routerLink="/wishlist" routerLinkActive="active-wish">
+                <a routerLink="/wishlist" routerLinkActive="active-wish"  class="relative me-4">
                     <i class="fa-solid fa-heart text-2xl text-sky-700" [title]="'wishlist.wishlist' | translate"></i>
+                    <div
+                    class="absolute inline-flex items-center justify-center
+                     w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
+                    {{wishCount()}}</div>
+
                 </a>
                 @if(isLoggedIn) {
                 <span class="flex items-center gap-2">
@@ -173,10 +178,10 @@
                 } @else {
                 <span class="flex items-center gap-2">
                     <i class="fa-solid fa-user text-2xl pe-1 text-sky-700"></i>
-                    <span class="flex flex-col leading-tight">
+                    <span class="flex flex-col items-center leading-tight">
                         <span class="font-medium text-xs text-gray-500 ps-2">{{'navbar.welcome' | translate}}</span>
                         <a routerLink="/login">
-                            <span class="text-sm text-sky-700 hover:underline">{{'navbar.login' | translate}}</span>
+                            <span class="text-sm text-sky-700 hover:underline">{{'navbar.login-regitser' | translate}}</span>
                         </a>
                     </span>
                 </span>

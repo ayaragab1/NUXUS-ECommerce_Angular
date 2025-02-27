@@ -8,8 +8,8 @@ import {
 import { AuthService } from '../../core/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Notyf } from 'notyf';
-import { NOTYF } from '../../shared/utilities/notyf.token';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forgetpassword',
@@ -18,11 +18,11 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './forgetpassword.component.scss',
 })
 export class ForgetpasswordComponent {
-  constructor(@Inject(NOTYF) private notyf: Notyf) {}
 
-  authservice = inject(AuthService);
-  formBuilder = inject(FormBuilder);
-  router = inject(Router);
+  private readonly authservice = inject(AuthService);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly router = inject(Router);
+  private readonly toastrService = inject(ToastrService);
   isLoading: boolean = false;
   step: number = 1;
 
@@ -58,7 +58,7 @@ export class ForgetpasswordComponent {
         },
         error: (err) => {
           this.isLoading = false;
-          this.notyf.error(err.error.message);
+          this.toastrService.error(err.error.message);
           },
       });
     }else{
@@ -77,7 +77,7 @@ export class ForgetpasswordComponent {
         },
         error: (err) => {
           this.isLoading = false;
-          this.notyf.error(err.error.message);
+          this.toastrService.error(err.error.message);
         },
       });
     }else{
@@ -94,7 +94,7 @@ export class ForgetpasswordComponent {
           this.isLoading = false;
           
             localStorage.setItem('userToken', res.token);
-            this.notyf.success('Password Changed Successfully');
+            this.toastrService.success('Password Changed Successfully');
             this.authservice.saveUserData();
             setInterval(()=>{
               this.router.navigate(['/home']);
@@ -102,7 +102,7 @@ export class ForgetpasswordComponent {
         },
         error: (err) => {
           this.isLoading = false;
-          this.notyf.error(err.error.message);
+          this.toastrService.error(err.error.message);
         },
       });
     }

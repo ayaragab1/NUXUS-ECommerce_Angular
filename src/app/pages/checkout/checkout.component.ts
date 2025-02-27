@@ -8,10 +8,11 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { CheckoutService } from '../../core/services/checkout/checkout.service';
 import { ToastrService } from 'ngx-toastr';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-checkout',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss',
 })

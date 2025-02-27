@@ -1,12 +1,14 @@
 import { isPlatformBrowser, UpperCasePipe } from '@angular/common';
 import {
   Component,
+  computed,
   ElementRef,
   inject,
   input,
   OnInit,
   PLATFORM_ID,
   Renderer2,
+  Signal,
   ViewChild,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -14,6 +16,7 @@ import { AuthService } from '../../core/services/auth/auth.service';
 import { CartService } from '../../core/services/carts/cart.service';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MyTranslateService } from '../../core/services/Translation/my-translate.service';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 @Component({
   selector: 'app-navbar',
   imports: [RouterLink, RouterLinkActive, TranslatePipe],
@@ -25,23 +28,42 @@ export class NavbarComponent implements OnInit {
   private readonly cartService = inject(CartService);
   private readonly myTranslateService = inject(MyTranslateService);
   private readonly translateService = inject(TranslateService);
+  private readonly wishlistService = inject(WishlistService);
   private readonly renderer = inject(Renderer2);
   Id = inject(PLATFORM_ID);
   isLoggedIn: boolean = false;
-  cartCount: number = 0;
+  cartCount = computed(() => this.cartService.cartItemsNumber());
+  wishCount = computed(() => this.wishlistService.wishlistCount());
   @ViewChild('dropdownNotification') dropdownNotification!: ElementRef;
 
   ngOnInit(): void {
     this.isUserLoggedIn();
     this.getCartCount();
+    this.getWishlistCount();
   }
 
   getCartCount(): void {
-   this.cartService.cartItemsNumber.subscribe({
-      next: (res) => {
-        this.cartCount = res;
-      },
-    });
+    if(isPlatformBrowser(this.Id)){
+      if(localStorage.getItem("userToken")){
+        this.cartService.getCartData().subscribe({
+          next: (res) => {
+            this.cartService.cartItemsNumber.set(res.numOfCartItems);
+          },
+        });
+      }
+    }
+  }
+
+  getWishlistCount(): void {
+    if(isPlatformBrowser(this.Id)){
+      if(localStorage.getItem("userToken")){
+        this.wishlistService.getWishlistData().subscribe({
+          next: (res) => {
+            this.wishlistService.wishlistCount.set(res.count);
+          },
+        });
+      }
+    }
   }
   isUserLoggedIn() {
     if (isPlatformBrowser(this.Id)) {

@@ -9,8 +9,8 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { Notyf } from 'notyf';
-import { NOTYF } from '../../shared/utilities/notyf.token';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-register',
   imports: [ReactiveFormsModule, RouterLink , TranslatePipe],
@@ -18,11 +18,11 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  constructor(@Inject(NOTYF) private notyf: Notyf) {}
 
   isLoading: boolean = false;
 
   private readonly authService = inject(AuthService);
+  private readonly toastrService = inject(ToastrService);
   private readonly router = inject(Router);
   registerForm: FormGroup = new FormGroup(
     {
@@ -57,7 +57,7 @@ export class RegisterComponent {
       this.authService.registerUser(this.registerForm.value).subscribe({
         next: (res) => {
           if (res.message == 'success') {
-            this.notyf.success('Account created successfully🎉,Please Login ');
+            this.toastrService.success('Account created successfully🎉,Please Login ');
             setTimeout(() => {
               this.router.navigate(['/login']);
             }, 1000);
@@ -67,7 +67,7 @@ export class RegisterComponent {
         },
         error: (error) => {
           this.isLoading = false;
-          this.notyf.error(error.error.message);
+          this.toastrService.error(error.error.message);
         },
       });
     } else {
