@@ -68,7 +68,7 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/product-details/product-details.component').then((c) => c.ProductDetailsComponent),
         title: 'Products',
-        data: {renderMode : 'dynamic'}
+        data: {renderMode : 'client'}
       
       },
       {
@@ -83,7 +83,7 @@ export const routes: Routes = [
           import('./pages/checkout/checkout.component').then((c) => c.CheckoutComponent),
         title: 'Checkout',
         canActivate:[authGuard],
-        data: {renderMode : 'dynamic'}
+        data: {renderMode : 'client'}
       },
       {
         path: 'wishlist',
